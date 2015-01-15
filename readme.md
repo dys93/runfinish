@@ -5,15 +5,15 @@
 本项目主要实现了 test03 的解析，能够正确解析的 markdown 语法最主要有：
 
 * 标题 h1 到 hn 
-* 3级列表<ul><ol>
-* <strong>标记
-* <em>标记
-* <code>标记
-* <pre><code> 代码块
-* <hr>
-* 连接<a href>
-* ![gump](link)
-* [word](link)
+* 3级列表ul ol
+* strong标记
+* em标记
+* code标记
+* pre code 代码块
+* hr
+* 连接a href
+* gump link
+* word link
 
 
 ## 测试文件和测试方法
@@ -47,12 +47,13 @@ python runfinish.py <filename.md> <outputfilename>
 	* 语法定义
 	* 属性问法
 
-遗憾的是，无法对该文件(readme.md)进行翻译
+遗憾的是，还无法对该文件(readme.md)进行翻译
 	
 # 2.组队信息
-1252957 丁宇笙
-1252847 杨宇歆
-1252862 关清晨
+* 1252957 丁宇笙
+* 1252847 杨宇歆
+* 1252862 关清晨
+
 ## 小组成员贡献说明
 
 ### 丁宇笙 1252957 
