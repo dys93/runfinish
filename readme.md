@@ -46,6 +46,7 @@ python runfinish.py <filename.md> <outputfilename>
 	* 词法定义
 	* 语法定义
 	* 属性问法
+6. 学会了使用github进行提交
 
 遗憾的是，还无法对该文件(readme.md)进行翻译
 	
