@@ -4,25 +4,22 @@
 
 本项目主要实现了 test03 的解析，能够正确解析的 markdown 语法最主要有：
 
-* 标题 h1 到 hn 
-* 3级列表ul ol
-* strong标记
-* em标记
-* code标记
-* pre code 代码块
-* hr
-* 连接a href
-* gump link
-* word link
-
+* 添加颜色功能 允许在所有模块中的文字添加颜色
+* test03中的所有功能的解析
+* 允许在所有模块中的文字添加特效（包括彩色 强调 斜体等）
+* 通过自定义的CSS样式 设定输出效果
 
 ## 测试文件和测试方法
 
 ```
+
 测试文件位于项目目录test下
 测试：
 python runfinish.py <filename.md> <outputfilename>
 <outputfilename>可以省略
+test01.md~03.md是助教的原始练习
+test04.md是针对添加的颜色功能提交的展示 
+
 ```
 
 ## 项目特别说明

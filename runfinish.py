@@ -8,10 +8,15 @@ import sys
 
 tokens = (
     'Text','Gump','Link','Hn','Cr','Strong','CodeLine','Blockquote','Href','EmWord','LinkWordName','Hr','CodeBlock',
-	'Li0','Li1','Li2','Li0spe','Li1spe','Li2spe'
+    'Li0','Li1','Li2','Li0spe','Li1spe','Li2spe','Color'
     )
 
 # Tokens
+def t_Color(t):
+    r'@C\#([0-9A-Fa-f]){6,6}\([^\)]+\)'
+    t.value="<span style=\"color:"+str(t.value)[2:9]+"\">"+str(t.value)[10:-1]+"</span>"
+    return t
+    
 def t_Hr(t):
     r'((\*\ *)|(\-\ *)|(=\ *)){3,}|(\*\ \*\ \*)'
     t.value='<HR>'
@@ -58,9 +63,8 @@ def t_Href(t):
     return t
 
 def t_CodeBlock(t):
-    r'```[^(```)]+```'
-    t.value=str(t.value)
-    t.value='<pre><code>'+t.value[3:-3]+'</pre></code>'
+    r'```'
+    t.value='<pre><code>'
     return t
 
 def t_LinkWordName(t):
@@ -155,16 +159,25 @@ def p_line(p):
             | wordlineEnd
             | blockquoteblock
             | Hr Cr
-            | CodeBlock Cr
+			| CodeBlockEnd Cr
             | Li0Block'''
     p[0]=p[1]+'\n'
+
+def p_CodeBlockText(p):
+    '''CodeBlockText : CodeBlock Cr wordlineinit
+                    | CodeBlockText Cr wordlineinit'''
+    p[0]=p[1]+"\n"+p[3]
     
+def p_CodeBlockEnd(p):
+    '''CodeBlockEnd : CodeBlockText Cr CodeBlock'''
+    p[0]=p[1]+"\n"+"</pre></code>"
+   
 def p_exp_gump_link(p):
     '''gumpline : Gump Link Cr'''
     p[0]="<img src=\""+p[2]+"\" alt=\"gump\">" +'\n'
 
 def p_exp_Hn_Text(p):
-    '''Hline : Hn Text Cr'''
+    '''Hline : Hn wordlineinit Cr'''
     p[0] = '<h'+str(((p[1])))+'>' + p[2] + '</h'+str(((p[1])))+'>' +'\n'
 
 def p_wordlineinit_text(p):
@@ -186,7 +199,8 @@ def p_special_text(p):
     '''specialtext : Strong 
                 | CodeLine
                 | EmWord
-                | linkword'''
+                | linkword
+                | Color'''
     p[0]=p[1]
     
 def p_blockquoteLine(p):
@@ -207,9 +221,9 @@ def p_linkword(p):
     p[0]='<a href="'+p[2]+'">'+p[1]+'</a>'
 
 def p_Li0List(p):
-    '''Li0List : Li0 Text Cr
+    '''Li0List : Li0 wordlineinit Cr
                 | Li0List Li0List
-                | Li0 Text Cr Li1Block'''
+                | Li0 wordlineinit Cr Li1Block'''
     if(len(p)==4):
         p[0]='<li>'+p[2]+'</li>\n'
     if(len(p)==3):
@@ -222,9 +236,9 @@ def p_Li0Block(p):
     p[0]='<ul>'+p[1]+'</ul>'
 
 def p_Li0speList(p):
-    '''Li0speList : Li0spe Text Cr
+    '''Li0speList : Li0spe wordlineinit Cr
                 | Li0speList Li0speList
-                | Li0spe Text Cr Li1Block'''
+                | Li0spe wordlineinit Cr Li1Block'''
     if(len(p)==4):
         p[0]='<li>'+p[2]+'</li>\n'
     if(len(p)==3):
@@ -234,13 +248,13 @@ def p_Li0speList(p):
 
 def p_Li0speBlock(p):
     '''Li0Block : Li0speList'''
-    p[0]='<ol>'+p[1]+'</ol>'	
-	
-	
+    p[0]='<ol>'+p[1]+'</ol>'    
+    
+    
 def p_Li1List(p):
-    '''Li1List : Li1 Text Cr
+    '''Li1List : Li1 wordlineinit Cr
                 | Li1List Li1List
-				| Li1 Text Cr Li2Block'''
+                | Li1 wordlineinit Cr Li2Block'''
     if(len(p)==4):
         p[0]='<li>'+p[2]+'</li>\n'
     if(len(p)==3):
@@ -252,13 +266,13 @@ def p_Li1List(p):
 def p_Li1Block(p):
     '''Li1Block : Li1List'''
     p[0]='<ul>'+p[1]+'</ul>\n'
-	
+    
 
 
 def p_Li1speList(p):
-    '''Li1speList : Li1spe Text Cr
+    '''Li1speList : Li1spe wordlineinit Cr
                 | Li1speList Li1speList
-				| Li1spe Text Cr Li2Block'''
+                | Li1spe wordlineinit Cr Li2Block'''
     if(len(p)==4):
         p[0]='<li>'+p[2]+'</li>\n'
     if(len(p)==3):
@@ -269,9 +283,9 @@ def p_Li1speList(p):
 def p_Li1speBlock(p):
     '''Li1Block : Li1speList'''
     p[0]='<ol>'+p[1]+'</ol>\n'
-	
+    
 def p_Li2List(p):
-    '''Li2List : Li2 Text Cr
+    '''Li2List : Li2 wordlineinit Cr
                 | Li2List Li2List'''
     if(len(p)==4):
         p[0]='<li>'+p[2]+'</li>\n'
@@ -279,7 +293,7 @@ def p_Li2List(p):
         p[0]=p[1]+p[2]
 
 def p_Li2speList(p):
-    '''Li2speList : Li2spe Text Cr
+    '''Li2speList : Li2spe wordlineinit Cr
                 | Li2speList Li2speList'''
     if(len(p)==4):
         p[0]='<li>'+p[2]+'</li>\n'
@@ -289,7 +303,7 @@ def p_Li2speList(p):
 def p_Li2speBlock(p):
     '''Li2Block : Li2speList'''
     p[0]='<ol>'+p[1]+'</ol>\n'
-	
+    
 def p_Li2Block(p):
     '''Li2Block : Li2List'''
     p[0]='<ul>'+p[1]+'</ul>\n'
@@ -305,13 +319,13 @@ yaccer=yacc.yacc(method="SLR")
 
 if __name__ == '__main__':
     filename = 'test03.md'
-	
+    
     result = yaccer.parse(open(sys.argv[1]).read(),debug=0)
     print result
     outputfile=open("output00.html",'w')
     outputfile.write(result)
     outputfile.close()
     if(len(sys.argv)==3):
-		outputfile=open(sys.argv[2],'w')
-		outputfile.write(result)
-		outputfile.close()
+        outputfile=open(sys.argv[2],'w')
+        outputfile.write(result)
+        outputfile.close()

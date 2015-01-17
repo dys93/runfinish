@@ -12,93 +12,100 @@ Rule 6     line -> gumpline
 Rule 7     line -> wordlineEnd
 Rule 8     line -> blockquoteblock
 Rule 9     line -> Hr Cr
-Rule 10    line -> CodeBlock Cr
+Rule 10    line -> CodeBlockEnd Cr
 Rule 11    line -> Li0Block
-Rule 12    gumpline -> Gump Link Cr
-Rule 13    Hline -> Hn Text Cr
-Rule 14    wordlineinit -> Text
-Rule 15    wordlineinit -> specialtext
-Rule 16    wordlineinit -> wordlineinit Text
-Rule 17    wordlineinit -> wordlineinit specialtext
-Rule 18    wordlineinit -> Href
-Rule 19    wordlineEnd -> wordlineinit Cr
-Rule 20    specialtext -> Strong
-Rule 21    specialtext -> CodeLine
-Rule 22    specialtext -> EmWord
-Rule 23    specialtext -> linkword
-Rule 24    blockquoteline -> Blockquote wordlineinit Cr
-Rule 25    blockquoteline -> blockquoteline blockquoteline
-Rule 26    blockquoteblock -> blockquoteline
-Rule 27    linkword -> LinkWordName Link
-Rule 28    Li0List -> Li0 Text Cr
-Rule 29    Li0List -> Li0List Li0List
-Rule 30    Li0List -> Li0 Text Cr Li1Block
-Rule 31    Li0Block -> Li0List
-Rule 32    Li0speList -> Li0spe Text Cr
-Rule 33    Li0speList -> Li0speList Li0speList
-Rule 34    Li0speList -> Li0spe Text Cr Li1Block
-Rule 35    Li0Block -> Li0speList
-Rule 36    Li1List -> Li1 Text Cr
-Rule 37    Li1List -> Li1List Li1List
-Rule 38    Li1List -> Li1 Text Cr Li2Block
-Rule 39    Li1Block -> Li1List
-Rule 40    Li1speList -> Li1spe Text Cr
-Rule 41    Li1speList -> Li1speList Li1speList
-Rule 42    Li1speList -> Li1spe Text Cr Li2Block
-Rule 43    Li1Block -> Li1speList
-Rule 44    Li2List -> Li2 Text Cr
-Rule 45    Li2List -> Li2List Li2List
-Rule 46    Li2speList -> Li2spe Text Cr
-Rule 47    Li2speList -> Li2speList Li2speList
-Rule 48    Li2Block -> Li2speList
-Rule 49    Li2Block -> Li2List
+Rule 12    CodeBlockText -> CodeBlock Cr wordlineinit
+Rule 13    CodeBlockText -> CodeBlockText Cr wordlineinit
+Rule 14    CodeBlockEnd -> CodeBlockText Cr CodeBlock
+Rule 15    gumpline -> Gump Link Cr
+Rule 16    Hline -> Hn wordlineinit Cr
+Rule 17    wordlineinit -> Text
+Rule 18    wordlineinit -> specialtext
+Rule 19    wordlineinit -> wordlineinit Text
+Rule 20    wordlineinit -> wordlineinit specialtext
+Rule 21    wordlineinit -> Href
+Rule 22    wordlineEnd -> wordlineinit Cr
+Rule 23    specialtext -> Strong
+Rule 24    specialtext -> CodeLine
+Rule 25    specialtext -> EmWord
+Rule 26    specialtext -> linkword
+Rule 27    specialtext -> Color
+Rule 28    blockquoteline -> Blockquote wordlineinit Cr
+Rule 29    blockquoteline -> blockquoteline blockquoteline
+Rule 30    blockquoteblock -> blockquoteline
+Rule 31    linkword -> LinkWordName Link
+Rule 32    Li0List -> Li0 wordlineinit Cr
+Rule 33    Li0List -> Li0List Li0List
+Rule 34    Li0List -> Li0 wordlineinit Cr Li1Block
+Rule 35    Li0Block -> Li0List
+Rule 36    Li0speList -> Li0spe wordlineinit Cr
+Rule 37    Li0speList -> Li0speList Li0speList
+Rule 38    Li0speList -> Li0spe wordlineinit Cr Li1Block
+Rule 39    Li0Block -> Li0speList
+Rule 40    Li1List -> Li1 wordlineinit Cr
+Rule 41    Li1List -> Li1List Li1List
+Rule 42    Li1List -> Li1 wordlineinit Cr Li2Block
+Rule 43    Li1Block -> Li1List
+Rule 44    Li1speList -> Li1spe wordlineinit Cr
+Rule 45    Li1speList -> Li1speList Li1speList
+Rule 46    Li1speList -> Li1spe wordlineinit Cr Li2Block
+Rule 47    Li1Block -> Li1speList
+Rule 48    Li2List -> Li2 wordlineinit Cr
+Rule 49    Li2List -> Li2List Li2List
+Rule 50    Li2speList -> Li2spe wordlineinit Cr
+Rule 51    Li2speList -> Li2speList Li2speList
+Rule 52    Li2Block -> Li2speList
+Rule 53    Li2Block -> Li2List
 
 Terminals, with rules where they appear
 
-Blockquote           : 24
-CodeBlock            : 10
-CodeLine             : 21
-Cr                   : 9 10 12 13 19 24 28 30 32 34 36 38 40 42 44 46
-EmWord               : 22
-Gump                 : 12
-Hn                   : 13
+Blockquote           : 28
+CodeBlock            : 12 14
+CodeLine             : 24
+Color                : 27
+Cr                   : 9 10 12 13 14 15 16 22 28 32 34 36 38 40 42 44 46 48 50
+EmWord               : 25
+Gump                 : 15
+Hn                   : 16
 Hr                   : 9
-Href                 : 18
-Li0                  : 28 30
-Li0spe               : 32 34
-Li1                  : 36 38
-Li1spe               : 40 42
-Li2                  : 44
-Li2spe               : 46
-Link                 : 12 27
-LinkWordName         : 27
-Strong               : 20
-Text                 : 13 14 16 28 30 32 34 36 38 40 42 44 46
+Href                 : 21
+Li0                  : 32 34
+Li0spe               : 36 38
+Li1                  : 40 42
+Li1spe               : 44 46
+Li2                  : 48
+Li2spe               : 50
+Link                 : 15 31
+LinkWordName         : 31
+Strong               : 23
+Text                 : 17 19
 error                : 
 
 Nonterminals, with rules where they appear
 
+CodeBlockEnd         : 10
+CodeBlockText        : 13 14
 Hline                : 5
 Li0Block             : 11
-Li0List              : 29 29 31
-Li0speList           : 33 33 35
-Li1Block             : 30 34
-Li1List              : 37 37 39
-Li1speList           : 41 41 43
-Li2Block             : 38 42
-Li2List              : 45 45 49
-Li2speList           : 47 47 48
+Li0List              : 33 33 35
+Li0speList           : 37 37 39
+Li1Block             : 34 38
+Li1List              : 41 41 43
+Li1speList           : 45 45 47
+Li2Block             : 42 46
+Li2List              : 49 49 53
+Li2speList           : 51 51 52
 block                : 1
 blockquoteblock      : 8
-blockquoteline       : 25 25 26
+blockquoteline       : 29 29 30
 body                 : 0
 gumpline             : 6
 line                 : 3 4
-linkword             : 23
+linkword             : 26
 mline                : 2 4
-specialtext          : 15 17
+specialtext          : 18 20
 wordlineEnd          : 7
-wordlineinit         : 16 17 19 24
+wordlineinit         : 12 13 16 19 20 22 28 32 34 36 38 40 42 44 46 48 50
 
 Parsing method: SLR
 
@@ -114,71 +121,79 @@ state 0
     (7) line -> . wordlineEnd
     (8) line -> . blockquoteblock
     (9) line -> . Hr Cr
-    (10) line -> . CodeBlock Cr
+    (10) line -> . CodeBlockEnd Cr
     (11) line -> . Li0Block
-    (13) Hline -> . Hn Text Cr
-    (12) gumpline -> . Gump Link Cr
-    (19) wordlineEnd -> . wordlineinit Cr
-    (26) blockquoteblock -> . blockquoteline
-    (31) Li0Block -> . Li0List
-    (35) Li0Block -> . Li0speList
-    (14) wordlineinit -> . Text
-    (15) wordlineinit -> . specialtext
-    (16) wordlineinit -> . wordlineinit Text
-    (17) wordlineinit -> . wordlineinit specialtext
-    (18) wordlineinit -> . Href
-    (24) blockquoteline -> . Blockquote wordlineinit Cr
-    (25) blockquoteline -> . blockquoteline blockquoteline
-    (28) Li0List -> . Li0 Text Cr
-    (29) Li0List -> . Li0List Li0List
-    (30) Li0List -> . Li0 Text Cr Li1Block
-    (32) Li0speList -> . Li0spe Text Cr
-    (33) Li0speList -> . Li0speList Li0speList
-    (34) Li0speList -> . Li0spe Text Cr Li1Block
-    (20) specialtext -> . Strong
-    (21) specialtext -> . CodeLine
-    (22) specialtext -> . EmWord
-    (23) specialtext -> . linkword
-    (27) linkword -> . LinkWordName Link
+    (16) Hline -> . Hn wordlineinit Cr
+    (15) gumpline -> . Gump Link Cr
+    (22) wordlineEnd -> . wordlineinit Cr
+    (30) blockquoteblock -> . blockquoteline
+    (14) CodeBlockEnd -> . CodeBlockText Cr CodeBlock
+    (35) Li0Block -> . Li0List
+    (39) Li0Block -> . Li0speList
+    (17) wordlineinit -> . Text
+    (18) wordlineinit -> . specialtext
+    (19) wordlineinit -> . wordlineinit Text
+    (20) wordlineinit -> . wordlineinit specialtext
+    (21) wordlineinit -> . Href
+    (28) blockquoteline -> . Blockquote wordlineinit Cr
+    (29) blockquoteline -> . blockquoteline blockquoteline
+    (12) CodeBlockText -> . CodeBlock Cr wordlineinit
+    (13) CodeBlockText -> . CodeBlockText Cr wordlineinit
+    (32) Li0List -> . Li0 wordlineinit Cr
+    (33) Li0List -> . Li0List Li0List
+    (34) Li0List -> . Li0 wordlineinit Cr Li1Block
+    (36) Li0speList -> . Li0spe wordlineinit Cr
+    (37) Li0speList -> . Li0speList Li0speList
+    (38) Li0speList -> . Li0spe wordlineinit Cr Li1Block
+    (23) specialtext -> . Strong
+    (24) specialtext -> . CodeLine
+    (25) specialtext -> . EmWord
+    (26) specialtext -> . linkword
+    (27) specialtext -> . Color
+    (31) linkword -> . LinkWordName Link
 
-    Hr              shift and go to state 5
-    CodeBlock       shift and go to state 18
-    Hn              shift and go to state 8
-    Gump            shift and go to state 13
-    Text            shift and go to state 20
-    Href            shift and go to state 7
-    Blockquote      shift and go to state 4
-    Li0             shift and go to state 14
+    Hr              shift and go to state 6
+    Hn              shift and go to state 9
+    Gump            shift and go to state 14
+    Text            shift and go to state 23
+    Href            shift and go to state 8
+    Blockquote      shift and go to state 5
+    CodeBlock       shift and go to state 20
+    Li0             shift and go to state 15
     Li0spe          shift and go to state 2
-    Strong          shift and go to state 9
-    CodeLine        shift and go to state 15
-    EmWord          shift and go to state 22
-    LinkWordName    shift and go to state 27
+    Strong          shift and go to state 10
+    CodeLine        shift and go to state 16
+    EmWord          shift and go to state 25
+    Color           shift and go to state 22
+    LinkWordName    shift and go to state 30
 
-    body                           shift and go to state 10
-    mline                          shift and go to state 19
+    body                           shift and go to state 11
+    mline                          shift and go to state 21
     blockquoteblock                shift and go to state 1
-    gumpline                       shift and go to state 11
+    gumpline                       shift and go to state 12
+    CodeBlockText                  shift and go to state 4
     Li0List                        shift and go to state 3
-    Li0speList                     shift and go to state 12
-    Li0Block                       shift and go to state 21
-    specialtext                    shift and go to state 6
-    Hline                          shift and go to state 23
-    blockquoteline                 shift and go to state 24
-    wordlineEnd                    shift and go to state 16
-    linkword                       shift and go to state 25
-    line                           shift and go to state 17
-    wordlineinit                   shift and go to state 26
-    block                          shift and go to state 28
+    Li0speList                     shift and go to state 13
+    Li0Block                       shift and go to state 24
+    specialtext                    shift and go to state 7
+    Hline                          shift and go to state 26
+    blockquoteline                 shift and go to state 27
+    wordlineEnd                    shift and go to state 17
+    linkword                       shift and go to state 28
+    CodeBlockEnd                   shift and go to state 18
+    line                           shift and go to state 19
+    wordlineinit                   shift and go to state 29
+    block                          shift and go to state 31
 
 state 1
 
     (8) line -> blockquoteblock .
 
     $end            reduce using rule 8 (line -> blockquoteblock .)
+    Hr              reduce using rule 8 (line -> blockquoteblock .)
     Hn              reduce using rule 8 (line -> blockquoteblock .)
     Gump            reduce using rule 8 (line -> blockquoteblock .)
-    Hr              reduce using rule 8 (line -> blockquoteblock .)
+    Blockquote      reduce using rule 8 (line -> blockquoteblock .)
     CodeBlock       reduce using rule 8 (line -> blockquoteblock .)
     Li0             reduce using rule 8 (line -> blockquoteblock .)
     Li0spe          reduce using rule 8 (line -> blockquoteblock .)
@@ -186,136 +201,191 @@ state 1
     Strong          reduce using rule 8 (line -> blockquoteblock .)
     CodeLine        reduce using rule 8 (line -> blockquoteblock .)
     EmWord          reduce using rule 8 (line -> blockquoteblock .)
+    Color           reduce using rule 8 (line -> blockquoteblock .)
     Href            reduce using rule 8 (line -> blockquoteblock .)
-    Blockquote      reduce using rule 8 (line -> blockquoteblock .)
     LinkWordName    reduce using rule 8 (line -> blockquoteblock .)
 
 
 state 2
 
-    (32) Li0speList -> Li0spe . Text Cr
-    (34) Li0speList -> Li0spe . Text Cr Li1Block
+    (36) Li0speList -> Li0spe . wordlineinit Cr
+    (38) Li0speList -> Li0spe . wordlineinit Cr Li1Block
+    (17) wordlineinit -> . Text
+    (18) wordlineinit -> . specialtext
+    (19) wordlineinit -> . wordlineinit Text
+    (20) wordlineinit -> . wordlineinit specialtext
+    (21) wordlineinit -> . Href
+    (23) specialtext -> . Strong
+    (24) specialtext -> . CodeLine
+    (25) specialtext -> . EmWord
+    (26) specialtext -> . linkword
+    (27) specialtext -> . Color
+    (31) linkword -> . LinkWordName Link
 
-    Text            shift and go to state 29
+    Text            shift and go to state 23
+    Href            shift and go to state 8
+    Strong          shift and go to state 10
+    CodeLine        shift and go to state 16
+    EmWord          shift and go to state 25
+    Color           shift and go to state 22
+    LinkWordName    shift and go to state 30
 
+    linkword                       shift and go to state 28
+    wordlineinit                   shift and go to state 32
+    specialtext                    shift and go to state 7
 
 state 3
 
-    (31) Li0Block -> Li0List .
-    (29) Li0List -> Li0List . Li0List
-    (28) Li0List -> . Li0 Text Cr
-    (29) Li0List -> . Li0List Li0List
-    (30) Li0List -> . Li0 Text Cr Li1Block
+    (35) Li0Block -> Li0List .
+    (33) Li0List -> Li0List . Li0List
+    (32) Li0List -> . Li0 wordlineinit Cr
+    (33) Li0List -> . Li0List Li0List
+    (34) Li0List -> . Li0 wordlineinit Cr Li1Block
 
   ! shift/reduce conflict for Li0 resolved as shift
-    $end            reduce using rule 31 (Li0Block -> Li0List .)
-    Hn              reduce using rule 31 (Li0Block -> Li0List .)
-    Gump            reduce using rule 31 (Li0Block -> Li0List .)
-    Hr              reduce using rule 31 (Li0Block -> Li0List .)
-    CodeBlock       reduce using rule 31 (Li0Block -> Li0List .)
-    Li0spe          reduce using rule 31 (Li0Block -> Li0List .)
-    Text            reduce using rule 31 (Li0Block -> Li0List .)
-    Strong          reduce using rule 31 (Li0Block -> Li0List .)
-    CodeLine        reduce using rule 31 (Li0Block -> Li0List .)
-    EmWord          reduce using rule 31 (Li0Block -> Li0List .)
-    Href            reduce using rule 31 (Li0Block -> Li0List .)
-    Blockquote      reduce using rule 31 (Li0Block -> Li0List .)
-    LinkWordName    reduce using rule 31 (Li0Block -> Li0List .)
-    Li0             shift and go to state 14
+    $end            reduce using rule 35 (Li0Block -> Li0List .)
+    Hr              reduce using rule 35 (Li0Block -> Li0List .)
+    Hn              reduce using rule 35 (Li0Block -> Li0List .)
+    Gump            reduce using rule 35 (Li0Block -> Li0List .)
+    Blockquote      reduce using rule 35 (Li0Block -> Li0List .)
+    CodeBlock       reduce using rule 35 (Li0Block -> Li0List .)
+    Li0spe          reduce using rule 35 (Li0Block -> Li0List .)
+    Text            reduce using rule 35 (Li0Block -> Li0List .)
+    Strong          reduce using rule 35 (Li0Block -> Li0List .)
+    CodeLine        reduce using rule 35 (Li0Block -> Li0List .)
+    EmWord          reduce using rule 35 (Li0Block -> Li0List .)
+    Color           reduce using rule 35 (Li0Block -> Li0List .)
+    Href            reduce using rule 35 (Li0Block -> Li0List .)
+    LinkWordName    reduce using rule 35 (Li0Block -> Li0List .)
+    Li0             shift and go to state 15
 
-  ! Li0             [ reduce using rule 31 (Li0Block -> Li0List .) ]
+  ! Li0             [ reduce using rule 35 (Li0Block -> Li0List .) ]
 
-    Li0List                        shift and go to state 30
+    Li0List                        shift and go to state 33
 
 state 4
 
-    (24) blockquoteline -> Blockquote . wordlineinit Cr
-    (14) wordlineinit -> . Text
-    (15) wordlineinit -> . specialtext
-    (16) wordlineinit -> . wordlineinit Text
-    (17) wordlineinit -> . wordlineinit specialtext
-    (18) wordlineinit -> . Href
-    (20) specialtext -> . Strong
-    (21) specialtext -> . CodeLine
-    (22) specialtext -> . EmWord
-    (23) specialtext -> . linkword
-    (27) linkword -> . LinkWordName Link
+    (14) CodeBlockEnd -> CodeBlockText . Cr CodeBlock
+    (13) CodeBlockText -> CodeBlockText . Cr wordlineinit
 
-    Text            shift and go to state 20
-    Href            shift and go to state 7
-    Strong          shift and go to state 9
-    CodeLine        shift and go to state 15
-    EmWord          shift and go to state 22
-    LinkWordName    shift and go to state 27
+    Cr              shift and go to state 34
 
-    linkword                       shift and go to state 25
-    wordlineinit                   shift and go to state 31
-    specialtext                    shift and go to state 6
 
 state 5
 
-    (9) line -> Hr . Cr
+    (28) blockquoteline -> Blockquote . wordlineinit Cr
+    (17) wordlineinit -> . Text
+    (18) wordlineinit -> . specialtext
+    (19) wordlineinit -> . wordlineinit Text
+    (20) wordlineinit -> . wordlineinit specialtext
+    (21) wordlineinit -> . Href
+    (23) specialtext -> . Strong
+    (24) specialtext -> . CodeLine
+    (25) specialtext -> . EmWord
+    (26) specialtext -> . linkword
+    (27) specialtext -> . Color
+    (31) linkword -> . LinkWordName Link
 
-    Cr              shift and go to state 32
+    Text            shift and go to state 23
+    Href            shift and go to state 8
+    Strong          shift and go to state 10
+    CodeLine        shift and go to state 16
+    EmWord          shift and go to state 25
+    Color           shift and go to state 22
+    LinkWordName    shift and go to state 30
 
+    linkword                       shift and go to state 28
+    wordlineinit                   shift and go to state 35
+    specialtext                    shift and go to state 7
 
 state 6
 
-    (15) wordlineinit -> specialtext .
+    (9) line -> Hr . Cr
 
-    Text            reduce using rule 15 (wordlineinit -> specialtext .)
-    Strong          reduce using rule 15 (wordlineinit -> specialtext .)
-    CodeLine        reduce using rule 15 (wordlineinit -> specialtext .)
-    EmWord          reduce using rule 15 (wordlineinit -> specialtext .)
-    LinkWordName    reduce using rule 15 (wordlineinit -> specialtext .)
-    Cr              reduce using rule 15 (wordlineinit -> specialtext .)
+    Cr              shift and go to state 36
 
 
 state 7
 
-    (18) wordlineinit -> Href .
+    (18) wordlineinit -> specialtext .
 
-    Text            reduce using rule 18 (wordlineinit -> Href .)
-    Strong          reduce using rule 18 (wordlineinit -> Href .)
-    CodeLine        reduce using rule 18 (wordlineinit -> Href .)
-    EmWord          reduce using rule 18 (wordlineinit -> Href .)
-    LinkWordName    reduce using rule 18 (wordlineinit -> Href .)
-    Cr              reduce using rule 18 (wordlineinit -> Href .)
+    Cr              reduce using rule 18 (wordlineinit -> specialtext .)
+    Text            reduce using rule 18 (wordlineinit -> specialtext .)
+    Strong          reduce using rule 18 (wordlineinit -> specialtext .)
+    CodeLine        reduce using rule 18 (wordlineinit -> specialtext .)
+    EmWord          reduce using rule 18 (wordlineinit -> specialtext .)
+    Color           reduce using rule 18 (wordlineinit -> specialtext .)
+    LinkWordName    reduce using rule 18 (wordlineinit -> specialtext .)
 
 
 state 8
 
-    (13) Hline -> Hn . Text Cr
+    (21) wordlineinit -> Href .
 
-    Text            shift and go to state 33
+    Cr              reduce using rule 21 (wordlineinit -> Href .)
+    Text            reduce using rule 21 (wordlineinit -> Href .)
+    Strong          reduce using rule 21 (wordlineinit -> Href .)
+    CodeLine        reduce using rule 21 (wordlineinit -> Href .)
+    EmWord          reduce using rule 21 (wordlineinit -> Href .)
+    Color           reduce using rule 21 (wordlineinit -> Href .)
+    LinkWordName    reduce using rule 21 (wordlineinit -> Href .)
 
 
 state 9
 
-    (20) specialtext -> Strong .
+    (16) Hline -> Hn . wordlineinit Cr
+    (17) wordlineinit -> . Text
+    (18) wordlineinit -> . specialtext
+    (19) wordlineinit -> . wordlineinit Text
+    (20) wordlineinit -> . wordlineinit specialtext
+    (21) wordlineinit -> . Href
+    (23) specialtext -> . Strong
+    (24) specialtext -> . CodeLine
+    (25) specialtext -> . EmWord
+    (26) specialtext -> . linkword
+    (27) specialtext -> . Color
+    (31) linkword -> . LinkWordName Link
 
-    Text            reduce using rule 20 (specialtext -> Strong .)
-    Strong          reduce using rule 20 (specialtext -> Strong .)
-    CodeLine        reduce using rule 20 (specialtext -> Strong .)
-    EmWord          reduce using rule 20 (specialtext -> Strong .)
-    LinkWordName    reduce using rule 20 (specialtext -> Strong .)
-    Cr              reduce using rule 20 (specialtext -> Strong .)
+    Text            shift and go to state 23
+    Href            shift and go to state 8
+    Strong          shift and go to state 10
+    CodeLine        shift and go to state 16
+    EmWord          shift and go to state 25
+    Color           shift and go to state 22
+    LinkWordName    shift and go to state 30
 
+    linkword                       shift and go to state 28
+    wordlineinit                   shift and go to state 37
+    specialtext                    shift and go to state 7
 
 state 10
+
+    (23) specialtext -> Strong .
+
+    Cr              reduce using rule 23 (specialtext -> Strong .)
+    Text            reduce using rule 23 (specialtext -> Strong .)
+    Strong          reduce using rule 23 (specialtext -> Strong .)
+    CodeLine        reduce using rule 23 (specialtext -> Strong .)
+    EmWord          reduce using rule 23 (specialtext -> Strong .)
+    Color           reduce using rule 23 (specialtext -> Strong .)
+    LinkWordName    reduce using rule 23 (specialtext -> Strong .)
+
+
+state 11
 
     (0) S' -> body .
 
 
 
-state 11
+state 12
 
     (6) line -> gumpline .
 
     $end            reduce using rule 6 (line -> gumpline .)
+    Hr              reduce using rule 6 (line -> gumpline .)
     Hn              reduce using rule 6 (line -> gumpline .)
     Gump            reduce using rule 6 (line -> gumpline .)
-    Hr              reduce using rule 6 (line -> gumpline .)
+    Blockquote      reduce using rule 6 (line -> gumpline .)
     CodeBlock       reduce using rule 6 (line -> gumpline .)
     Li0             reduce using rule 6 (line -> gumpline .)
     Li0spe          reduce using rule 6 (line -> gumpline .)
@@ -323,74 +393,97 @@ state 11
     Strong          reduce using rule 6 (line -> gumpline .)
     CodeLine        reduce using rule 6 (line -> gumpline .)
     EmWord          reduce using rule 6 (line -> gumpline .)
+    Color           reduce using rule 6 (line -> gumpline .)
     Href            reduce using rule 6 (line -> gumpline .)
-    Blockquote      reduce using rule 6 (line -> gumpline .)
     LinkWordName    reduce using rule 6 (line -> gumpline .)
 
 
-state 12
-
-    (35) Li0Block -> Li0speList .
-    (33) Li0speList -> Li0speList . Li0speList
-    (32) Li0speList -> . Li0spe Text Cr
-    (33) Li0speList -> . Li0speList Li0speList
-    (34) Li0speList -> . Li0spe Text Cr Li1Block
-
-  ! shift/reduce conflict for Li0spe resolved as shift
-    $end            reduce using rule 35 (Li0Block -> Li0speList .)
-    Hn              reduce using rule 35 (Li0Block -> Li0speList .)
-    Gump            reduce using rule 35 (Li0Block -> Li0speList .)
-    Hr              reduce using rule 35 (Li0Block -> Li0speList .)
-    CodeBlock       reduce using rule 35 (Li0Block -> Li0speList .)
-    Li0             reduce using rule 35 (Li0Block -> Li0speList .)
-    Text            reduce using rule 35 (Li0Block -> Li0speList .)
-    Strong          reduce using rule 35 (Li0Block -> Li0speList .)
-    CodeLine        reduce using rule 35 (Li0Block -> Li0speList .)
-    EmWord          reduce using rule 35 (Li0Block -> Li0speList .)
-    Href            reduce using rule 35 (Li0Block -> Li0speList .)
-    Blockquote      reduce using rule 35 (Li0Block -> Li0speList .)
-    LinkWordName    reduce using rule 35 (Li0Block -> Li0speList .)
-    Li0spe          shift and go to state 2
-
-  ! Li0spe          [ reduce using rule 35 (Li0Block -> Li0speList .) ]
-
-    Li0speList                     shift and go to state 34
-
 state 13
 
-    (12) gumpline -> Gump . Link Cr
+    (39) Li0Block -> Li0speList .
+    (37) Li0speList -> Li0speList . Li0speList
+    (36) Li0speList -> . Li0spe wordlineinit Cr
+    (37) Li0speList -> . Li0speList Li0speList
+    (38) Li0speList -> . Li0spe wordlineinit Cr Li1Block
 
-    Link            shift and go to state 35
+  ! shift/reduce conflict for Li0spe resolved as shift
+    $end            reduce using rule 39 (Li0Block -> Li0speList .)
+    Hr              reduce using rule 39 (Li0Block -> Li0speList .)
+    Hn              reduce using rule 39 (Li0Block -> Li0speList .)
+    Gump            reduce using rule 39 (Li0Block -> Li0speList .)
+    Blockquote      reduce using rule 39 (Li0Block -> Li0speList .)
+    CodeBlock       reduce using rule 39 (Li0Block -> Li0speList .)
+    Li0             reduce using rule 39 (Li0Block -> Li0speList .)
+    Text            reduce using rule 39 (Li0Block -> Li0speList .)
+    Strong          reduce using rule 39 (Li0Block -> Li0speList .)
+    CodeLine        reduce using rule 39 (Li0Block -> Li0speList .)
+    EmWord          reduce using rule 39 (Li0Block -> Li0speList .)
+    Color           reduce using rule 39 (Li0Block -> Li0speList .)
+    Href            reduce using rule 39 (Li0Block -> Li0speList .)
+    LinkWordName    reduce using rule 39 (Li0Block -> Li0speList .)
+    Li0spe          shift and go to state 2
 
+  ! Li0spe          [ reduce using rule 39 (Li0Block -> Li0speList .) ]
+
+    Li0speList                     shift and go to state 38
 
 state 14
 
-    (28) Li0List -> Li0 . Text Cr
-    (30) Li0List -> Li0 . Text Cr Li1Block
+    (15) gumpline -> Gump . Link Cr
 
-    Text            shift and go to state 36
+    Link            shift and go to state 39
 
 
 state 15
 
-    (21) specialtext -> CodeLine .
+    (32) Li0List -> Li0 . wordlineinit Cr
+    (34) Li0List -> Li0 . wordlineinit Cr Li1Block
+    (17) wordlineinit -> . Text
+    (18) wordlineinit -> . specialtext
+    (19) wordlineinit -> . wordlineinit Text
+    (20) wordlineinit -> . wordlineinit specialtext
+    (21) wordlineinit -> . Href
+    (23) specialtext -> . Strong
+    (24) specialtext -> . CodeLine
+    (25) specialtext -> . EmWord
+    (26) specialtext -> . linkword
+    (27) specialtext -> . Color
+    (31) linkword -> . LinkWordName Link
 
-    Text            reduce using rule 21 (specialtext -> CodeLine .)
-    Strong          reduce using rule 21 (specialtext -> CodeLine .)
-    CodeLine        reduce using rule 21 (specialtext -> CodeLine .)
-    EmWord          reduce using rule 21 (specialtext -> CodeLine .)
-    LinkWordName    reduce using rule 21 (specialtext -> CodeLine .)
-    Cr              reduce using rule 21 (specialtext -> CodeLine .)
+    Text            shift and go to state 23
+    Href            shift and go to state 8
+    Strong          shift and go to state 10
+    CodeLine        shift and go to state 16
+    EmWord          shift and go to state 25
+    Color           shift and go to state 22
+    LinkWordName    shift and go to state 30
 
+    linkword                       shift and go to state 28
+    wordlineinit                   shift and go to state 40
+    specialtext                    shift and go to state 7
 
 state 16
+
+    (24) specialtext -> CodeLine .
+
+    Cr              reduce using rule 24 (specialtext -> CodeLine .)
+    Text            reduce using rule 24 (specialtext -> CodeLine .)
+    Strong          reduce using rule 24 (specialtext -> CodeLine .)
+    CodeLine        reduce using rule 24 (specialtext -> CodeLine .)
+    EmWord          reduce using rule 24 (specialtext -> CodeLine .)
+    Color           reduce using rule 24 (specialtext -> CodeLine .)
+    LinkWordName    reduce using rule 24 (specialtext -> CodeLine .)
+
+
+state 17
 
     (7) line -> wordlineEnd .
 
     $end            reduce using rule 7 (line -> wordlineEnd .)
+    Hr              reduce using rule 7 (line -> wordlineEnd .)
     Hn              reduce using rule 7 (line -> wordlineEnd .)
     Gump            reduce using rule 7 (line -> wordlineEnd .)
-    Hr              reduce using rule 7 (line -> wordlineEnd .)
+    Blockquote      reduce using rule 7 (line -> wordlineEnd .)
     CodeBlock       reduce using rule 7 (line -> wordlineEnd .)
     Li0             reduce using rule 7 (line -> wordlineEnd .)
     Li0spe          reduce using rule 7 (line -> wordlineEnd .)
@@ -398,19 +491,27 @@ state 16
     Strong          reduce using rule 7 (line -> wordlineEnd .)
     CodeLine        reduce using rule 7 (line -> wordlineEnd .)
     EmWord          reduce using rule 7 (line -> wordlineEnd .)
+    Color           reduce using rule 7 (line -> wordlineEnd .)
     Href            reduce using rule 7 (line -> wordlineEnd .)
-    Blockquote      reduce using rule 7 (line -> wordlineEnd .)
     LinkWordName    reduce using rule 7 (line -> wordlineEnd .)
 
 
-state 17
+state 18
+
+    (10) line -> CodeBlockEnd . Cr
+
+    Cr              shift and go to state 41
+
+
+state 19
 
     (3) mline -> line .
 
     $end            reduce using rule 3 (mline -> line .)
+    Hr              reduce using rule 3 (mline -> line .)
     Hn              reduce using rule 3 (mline -> line .)
     Gump            reduce using rule 3 (mline -> line .)
-    Hr              reduce using rule 3 (mline -> line .)
+    Blockquote      reduce using rule 3 (mline -> line .)
     CodeBlock       reduce using rule 3 (mline -> line .)
     Li0             reduce using rule 3 (mline -> line .)
     Li0spe          reduce using rule 3 (mline -> line .)
@@ -418,19 +519,19 @@ state 17
     Strong          reduce using rule 3 (mline -> line .)
     CodeLine        reduce using rule 3 (mline -> line .)
     EmWord          reduce using rule 3 (mline -> line .)
+    Color           reduce using rule 3 (mline -> line .)
     Href            reduce using rule 3 (mline -> line .)
-    Blockquote      reduce using rule 3 (mline -> line .)
     LinkWordName    reduce using rule 3 (mline -> line .)
 
 
-state 18
+state 20
 
-    (10) line -> CodeBlock . Cr
+    (12) CodeBlockText -> CodeBlock . Cr wordlineinit
 
-    Cr              shift and go to state 37
+    Cr              shift and go to state 42
 
 
-state 19
+state 21
 
     (2) block -> mline .
     (4) mline -> mline . line
@@ -439,81 +540,103 @@ state 19
     (7) line -> . wordlineEnd
     (8) line -> . blockquoteblock
     (9) line -> . Hr Cr
-    (10) line -> . CodeBlock Cr
+    (10) line -> . CodeBlockEnd Cr
     (11) line -> . Li0Block
-    (13) Hline -> . Hn Text Cr
-    (12) gumpline -> . Gump Link Cr
-    (19) wordlineEnd -> . wordlineinit Cr
-    (26) blockquoteblock -> . blockquoteline
-    (31) Li0Block -> . Li0List
-    (35) Li0Block -> . Li0speList
-    (14) wordlineinit -> . Text
-    (15) wordlineinit -> . specialtext
-    (16) wordlineinit -> . wordlineinit Text
-    (17) wordlineinit -> . wordlineinit specialtext
-    (18) wordlineinit -> . Href
-    (24) blockquoteline -> . Blockquote wordlineinit Cr
-    (25) blockquoteline -> . blockquoteline blockquoteline
-    (28) Li0List -> . Li0 Text Cr
-    (29) Li0List -> . Li0List Li0List
-    (30) Li0List -> . Li0 Text Cr Li1Block
-    (32) Li0speList -> . Li0spe Text Cr
-    (33) Li0speList -> . Li0speList Li0speList
-    (34) Li0speList -> . Li0spe Text Cr Li1Block
-    (20) specialtext -> . Strong
-    (21) specialtext -> . CodeLine
-    (22) specialtext -> . EmWord
-    (23) specialtext -> . linkword
-    (27) linkword -> . LinkWordName Link
+    (16) Hline -> . Hn wordlineinit Cr
+    (15) gumpline -> . Gump Link Cr
+    (22) wordlineEnd -> . wordlineinit Cr
+    (30) blockquoteblock -> . blockquoteline
+    (14) CodeBlockEnd -> . CodeBlockText Cr CodeBlock
+    (35) Li0Block -> . Li0List
+    (39) Li0Block -> . Li0speList
+    (17) wordlineinit -> . Text
+    (18) wordlineinit -> . specialtext
+    (19) wordlineinit -> . wordlineinit Text
+    (20) wordlineinit -> . wordlineinit specialtext
+    (21) wordlineinit -> . Href
+    (28) blockquoteline -> . Blockquote wordlineinit Cr
+    (29) blockquoteline -> . blockquoteline blockquoteline
+    (12) CodeBlockText -> . CodeBlock Cr wordlineinit
+    (13) CodeBlockText -> . CodeBlockText Cr wordlineinit
+    (32) Li0List -> . Li0 wordlineinit Cr
+    (33) Li0List -> . Li0List Li0List
+    (34) Li0List -> . Li0 wordlineinit Cr Li1Block
+    (36) Li0speList -> . Li0spe wordlineinit Cr
+    (37) Li0speList -> . Li0speList Li0speList
+    (38) Li0speList -> . Li0spe wordlineinit Cr Li1Block
+    (23) specialtext -> . Strong
+    (24) specialtext -> . CodeLine
+    (25) specialtext -> . EmWord
+    (26) specialtext -> . linkword
+    (27) specialtext -> . Color
+    (31) linkword -> . LinkWordName Link
 
     $end            reduce using rule 2 (block -> mline .)
-    Hr              shift and go to state 5
-    CodeBlock       shift and go to state 18
-    Hn              shift and go to state 8
-    Gump            shift and go to state 13
-    Text            shift and go to state 20
-    Href            shift and go to state 7
-    Blockquote      shift and go to state 4
-    Li0             shift and go to state 14
+    Hr              shift and go to state 6
+    Hn              shift and go to state 9
+    Gump            shift and go to state 14
+    Text            shift and go to state 23
+    Href            shift and go to state 8
+    Blockquote      shift and go to state 5
+    CodeBlock       shift and go to state 20
+    Li0             shift and go to state 15
     Li0spe          shift and go to state 2
-    Strong          shift and go to state 9
-    CodeLine        shift and go to state 15
-    EmWord          shift and go to state 22
-    LinkWordName    shift and go to state 27
+    Strong          shift and go to state 10
+    CodeLine        shift and go to state 16
+    EmWord          shift and go to state 25
+    Color           shift and go to state 22
+    LinkWordName    shift and go to state 30
 
     blockquoteblock                shift and go to state 1
-    gumpline                       shift and go to state 11
+    gumpline                       shift and go to state 12
     Li0List                        shift and go to state 3
-    Li0speList                     shift and go to state 12
-    Li0Block                       shift and go to state 21
-    specialtext                    shift and go to state 6
-    Hline                          shift and go to state 23
-    blockquoteline                 shift and go to state 24
-    wordlineEnd                    shift and go to state 16
-    linkword                       shift and go to state 25
-    line                           shift and go to state 38
-    wordlineinit                   shift and go to state 26
+    Li0speList                     shift and go to state 13
+    Li0Block                       shift and go to state 24
+    specialtext                    shift and go to state 7
+    Hline                          shift and go to state 26
+    blockquoteline                 shift and go to state 27
+    wordlineEnd                    shift and go to state 17
+    linkword                       shift and go to state 28
+    CodeBlockEnd                   shift and go to state 18
+    line                           shift and go to state 43
+    wordlineinit                   shift and go to state 29
+    CodeBlockText                  shift and go to state 4
 
-state 20
+state 22
 
-    (14) wordlineinit -> Text .
+    (27) specialtext -> Color .
 
-    Text            reduce using rule 14 (wordlineinit -> Text .)
-    Strong          reduce using rule 14 (wordlineinit -> Text .)
-    CodeLine        reduce using rule 14 (wordlineinit -> Text .)
-    EmWord          reduce using rule 14 (wordlineinit -> Text .)
-    LinkWordName    reduce using rule 14 (wordlineinit -> Text .)
-    Cr              reduce using rule 14 (wordlineinit -> Text .)
+    Cr              reduce using rule 27 (specialtext -> Color .)
+    Text            reduce using rule 27 (specialtext -> Color .)
+    Strong          reduce using rule 27 (specialtext -> Color .)
+    CodeLine        reduce using rule 27 (specialtext -> Color .)
+    EmWord          reduce using rule 27 (specialtext -> Color .)
+    Color           reduce using rule 27 (specialtext -> Color .)
+    LinkWordName    reduce using rule 27 (specialtext -> Color .)
 
 
-state 21
+state 23
+
+    (17) wordlineinit -> Text .
+
+    Cr              reduce using rule 17 (wordlineinit -> Text .)
+    Text            reduce using rule 17 (wordlineinit -> Text .)
+    Strong          reduce using rule 17 (wordlineinit -> Text .)
+    CodeLine        reduce using rule 17 (wordlineinit -> Text .)
+    EmWord          reduce using rule 17 (wordlineinit -> Text .)
+    Color           reduce using rule 17 (wordlineinit -> Text .)
+    LinkWordName    reduce using rule 17 (wordlineinit -> Text .)
+
+
+state 24
 
     (11) line -> Li0Block .
 
     $end            reduce using rule 11 (line -> Li0Block .)
+    Hr              reduce using rule 11 (line -> Li0Block .)
     Hn              reduce using rule 11 (line -> Li0Block .)
     Gump            reduce using rule 11 (line -> Li0Block .)
-    Hr              reduce using rule 11 (line -> Li0Block .)
+    Blockquote      reduce using rule 11 (line -> Li0Block .)
     CodeBlock       reduce using rule 11 (line -> Li0Block .)
     Li0             reduce using rule 11 (line -> Li0Block .)
     Li0spe          reduce using rule 11 (line -> Li0Block .)
@@ -521,31 +644,33 @@ state 21
     Strong          reduce using rule 11 (line -> Li0Block .)
     CodeLine        reduce using rule 11 (line -> Li0Block .)
     EmWord          reduce using rule 11 (line -> Li0Block .)
+    Color           reduce using rule 11 (line -> Li0Block .)
     Href            reduce using rule 11 (line -> Li0Block .)
-    Blockquote      reduce using rule 11 (line -> Li0Block .)
     LinkWordName    reduce using rule 11 (line -> Li0Block .)
 
 
-state 22
+state 25
 
-    (22) specialtext -> EmWord .
+    (25) specialtext -> EmWord .
 
-    Text            reduce using rule 22 (specialtext -> EmWord .)
-    Strong          reduce using rule 22 (specialtext -> EmWord .)
-    CodeLine        reduce using rule 22 (specialtext -> EmWord .)
-    EmWord          reduce using rule 22 (specialtext -> EmWord .)
-    LinkWordName    reduce using rule 22 (specialtext -> EmWord .)
-    Cr              reduce using rule 22 (specialtext -> EmWord .)
+    Cr              reduce using rule 25 (specialtext -> EmWord .)
+    Text            reduce using rule 25 (specialtext -> EmWord .)
+    Strong          reduce using rule 25 (specialtext -> EmWord .)
+    CodeLine        reduce using rule 25 (specialtext -> EmWord .)
+    EmWord          reduce using rule 25 (specialtext -> EmWord .)
+    Color           reduce using rule 25 (specialtext -> EmWord .)
+    LinkWordName    reduce using rule 25 (specialtext -> EmWord .)
 
 
-state 23
+state 26
 
     (5) line -> Hline .
 
     $end            reduce using rule 5 (line -> Hline .)
+    Hr              reduce using rule 5 (line -> Hline .)
     Hn              reduce using rule 5 (line -> Hline .)
     Gump            reduce using rule 5 (line -> Hline .)
-    Hr              reduce using rule 5 (line -> Hline .)
+    Blockquote      reduce using rule 5 (line -> Hline .)
     CodeBlock       reduce using rule 5 (line -> Hline .)
     Li0             reduce using rule 5 (line -> Hline .)
     Li0spe          reduce using rule 5 (line -> Hline .)
@@ -553,150 +678,203 @@ state 23
     Strong          reduce using rule 5 (line -> Hline .)
     CodeLine        reduce using rule 5 (line -> Hline .)
     EmWord          reduce using rule 5 (line -> Hline .)
+    Color           reduce using rule 5 (line -> Hline .)
     Href            reduce using rule 5 (line -> Hline .)
-    Blockquote      reduce using rule 5 (line -> Hline .)
     LinkWordName    reduce using rule 5 (line -> Hline .)
 
 
-state 24
-
-    (26) blockquoteblock -> blockquoteline .
-    (25) blockquoteline -> blockquoteline . blockquoteline
-    (24) blockquoteline -> . Blockquote wordlineinit Cr
-    (25) blockquoteline -> . blockquoteline blockquoteline
-
-  ! shift/reduce conflict for Blockquote resolved as shift
-    $end            reduce using rule 26 (blockquoteblock -> blockquoteline .)
-    Hn              reduce using rule 26 (blockquoteblock -> blockquoteline .)
-    Gump            reduce using rule 26 (blockquoteblock -> blockquoteline .)
-    Hr              reduce using rule 26 (blockquoteblock -> blockquoteline .)
-    CodeBlock       reduce using rule 26 (blockquoteblock -> blockquoteline .)
-    Li0             reduce using rule 26 (blockquoteblock -> blockquoteline .)
-    Li0spe          reduce using rule 26 (blockquoteblock -> blockquoteline .)
-    Text            reduce using rule 26 (blockquoteblock -> blockquoteline .)
-    Strong          reduce using rule 26 (blockquoteblock -> blockquoteline .)
-    CodeLine        reduce using rule 26 (blockquoteblock -> blockquoteline .)
-    EmWord          reduce using rule 26 (blockquoteblock -> blockquoteline .)
-    Href            reduce using rule 26 (blockquoteblock -> blockquoteline .)
-    LinkWordName    reduce using rule 26 (blockquoteblock -> blockquoteline .)
-    Blockquote      shift and go to state 4
-
-  ! Blockquote      [ reduce using rule 26 (blockquoteblock -> blockquoteline .) ]
-
-    blockquoteline                 shift and go to state 39
-
-state 25
-
-    (23) specialtext -> linkword .
-
-    Text            reduce using rule 23 (specialtext -> linkword .)
-    Strong          reduce using rule 23 (specialtext -> linkword .)
-    CodeLine        reduce using rule 23 (specialtext -> linkword .)
-    EmWord          reduce using rule 23 (specialtext -> linkword .)
-    LinkWordName    reduce using rule 23 (specialtext -> linkword .)
-    Cr              reduce using rule 23 (specialtext -> linkword .)
-
-
-state 26
-
-    (19) wordlineEnd -> wordlineinit . Cr
-    (16) wordlineinit -> wordlineinit . Text
-    (17) wordlineinit -> wordlineinit . specialtext
-    (20) specialtext -> . Strong
-    (21) specialtext -> . CodeLine
-    (22) specialtext -> . EmWord
-    (23) specialtext -> . linkword
-    (27) linkword -> . LinkWordName Link
-
-    Cr              shift and go to state 42
-    Text            shift and go to state 40
-    Strong          shift and go to state 9
-    CodeLine        shift and go to state 15
-    EmWord          shift and go to state 22
-    LinkWordName    shift and go to state 27
-
-    linkword                       shift and go to state 25
-    specialtext                    shift and go to state 41
-
 state 27
 
-    (27) linkword -> LinkWordName . Link
+    (30) blockquoteblock -> blockquoteline .
+    (29) blockquoteline -> blockquoteline . blockquoteline
+    (28) blockquoteline -> . Blockquote wordlineinit Cr
+    (29) blockquoteline -> . blockquoteline blockquoteline
 
-    Link            shift and go to state 43
+  ! shift/reduce conflict for Blockquote resolved as shift
+    $end            reduce using rule 30 (blockquoteblock -> blockquoteline .)
+    Hr              reduce using rule 30 (blockquoteblock -> blockquoteline .)
+    Hn              reduce using rule 30 (blockquoteblock -> blockquoteline .)
+    Gump            reduce using rule 30 (blockquoteblock -> blockquoteline .)
+    CodeBlock       reduce using rule 30 (blockquoteblock -> blockquoteline .)
+    Li0             reduce using rule 30 (blockquoteblock -> blockquoteline .)
+    Li0spe          reduce using rule 30 (blockquoteblock -> blockquoteline .)
+    Text            reduce using rule 30 (blockquoteblock -> blockquoteline .)
+    Strong          reduce using rule 30 (blockquoteblock -> blockquoteline .)
+    CodeLine        reduce using rule 30 (blockquoteblock -> blockquoteline .)
+    EmWord          reduce using rule 30 (blockquoteblock -> blockquoteline .)
+    Color           reduce using rule 30 (blockquoteblock -> blockquoteline .)
+    Href            reduce using rule 30 (blockquoteblock -> blockquoteline .)
+    LinkWordName    reduce using rule 30 (blockquoteblock -> blockquoteline .)
+    Blockquote      shift and go to state 5
 
+  ! Blockquote      [ reduce using rule 30 (blockquoteblock -> blockquoteline .) ]
+
+    blockquoteline                 shift and go to state 44
 
 state 28
+
+    (26) specialtext -> linkword .
+
+    Cr              reduce using rule 26 (specialtext -> linkword .)
+    Text            reduce using rule 26 (specialtext -> linkword .)
+    Strong          reduce using rule 26 (specialtext -> linkword .)
+    CodeLine        reduce using rule 26 (specialtext -> linkword .)
+    EmWord          reduce using rule 26 (specialtext -> linkword .)
+    Color           reduce using rule 26 (specialtext -> linkword .)
+    LinkWordName    reduce using rule 26 (specialtext -> linkword .)
+
+
+state 29
+
+    (22) wordlineEnd -> wordlineinit . Cr
+    (19) wordlineinit -> wordlineinit . Text
+    (20) wordlineinit -> wordlineinit . specialtext
+    (23) specialtext -> . Strong
+    (24) specialtext -> . CodeLine
+    (25) specialtext -> . EmWord
+    (26) specialtext -> . linkword
+    (27) specialtext -> . Color
+    (31) linkword -> . LinkWordName Link
+
+    Cr              shift and go to state 47
+    Text            shift and go to state 45
+    Strong          shift and go to state 10
+    CodeLine        shift and go to state 16
+    EmWord          shift and go to state 25
+    Color           shift and go to state 22
+    LinkWordName    shift and go to state 30
+
+    linkword                       shift and go to state 28
+    specialtext                    shift and go to state 46
+
+state 30
+
+    (31) linkword -> LinkWordName . Link
+
+    Link            shift and go to state 48
+
+
+state 31
 
     (1) body -> block .
 
     $end            reduce using rule 1 (body -> block .)
 
 
-state 29
+state 32
 
-    (32) Li0speList -> Li0spe Text . Cr
-    (34) Li0speList -> Li0spe Text . Cr Li1Block
+    (36) Li0speList -> Li0spe wordlineinit . Cr
+    (38) Li0speList -> Li0spe wordlineinit . Cr Li1Block
+    (19) wordlineinit -> wordlineinit . Text
+    (20) wordlineinit -> wordlineinit . specialtext
+    (23) specialtext -> . Strong
+    (24) specialtext -> . CodeLine
+    (25) specialtext -> . EmWord
+    (26) specialtext -> . linkword
+    (27) specialtext -> . Color
+    (31) linkword -> . LinkWordName Link
 
-    Cr              shift and go to state 44
+    Cr              shift and go to state 49
+    Text            shift and go to state 45
+    Strong          shift and go to state 10
+    CodeLine        shift and go to state 16
+    EmWord          shift and go to state 25
+    Color           shift and go to state 22
+    LinkWordName    shift and go to state 30
 
+    linkword                       shift and go to state 28
+    specialtext                    shift and go to state 46
 
-state 30
+state 33
 
-    (29) Li0List -> Li0List Li0List .
-    (29) Li0List -> Li0List . Li0List
-    (28) Li0List -> . Li0 Text Cr
-    (29) Li0List -> . Li0List Li0List
-    (30) Li0List -> . Li0 Text Cr Li1Block
+    (33) Li0List -> Li0List Li0List .
+    (33) Li0List -> Li0List . Li0List
+    (32) Li0List -> . Li0 wordlineinit Cr
+    (33) Li0List -> . Li0List Li0List
+    (34) Li0List -> . Li0 wordlineinit Cr Li1Block
 
   ! shift/reduce conflict for Li0 resolved as shift
-    $end            reduce using rule 29 (Li0List -> Li0List Li0List .)
-    Hn              reduce using rule 29 (Li0List -> Li0List Li0List .)
-    Gump            reduce using rule 29 (Li0List -> Li0List Li0List .)
-    Hr              reduce using rule 29 (Li0List -> Li0List Li0List .)
-    CodeBlock       reduce using rule 29 (Li0List -> Li0List Li0List .)
-    Li0spe          reduce using rule 29 (Li0List -> Li0List Li0List .)
-    Text            reduce using rule 29 (Li0List -> Li0List Li0List .)
-    Strong          reduce using rule 29 (Li0List -> Li0List Li0List .)
-    CodeLine        reduce using rule 29 (Li0List -> Li0List Li0List .)
-    EmWord          reduce using rule 29 (Li0List -> Li0List Li0List .)
-    Href            reduce using rule 29 (Li0List -> Li0List Li0List .)
-    Blockquote      reduce using rule 29 (Li0List -> Li0List Li0List .)
-    LinkWordName    reduce using rule 29 (Li0List -> Li0List Li0List .)
-    Li0             shift and go to state 14
+    $end            reduce using rule 33 (Li0List -> Li0List Li0List .)
+    Hr              reduce using rule 33 (Li0List -> Li0List Li0List .)
+    Hn              reduce using rule 33 (Li0List -> Li0List Li0List .)
+    Gump            reduce using rule 33 (Li0List -> Li0List Li0List .)
+    Blockquote      reduce using rule 33 (Li0List -> Li0List Li0List .)
+    CodeBlock       reduce using rule 33 (Li0List -> Li0List Li0List .)
+    Li0spe          reduce using rule 33 (Li0List -> Li0List Li0List .)
+    Text            reduce using rule 33 (Li0List -> Li0List Li0List .)
+    Strong          reduce using rule 33 (Li0List -> Li0List Li0List .)
+    CodeLine        reduce using rule 33 (Li0List -> Li0List Li0List .)
+    EmWord          reduce using rule 33 (Li0List -> Li0List Li0List .)
+    Color           reduce using rule 33 (Li0List -> Li0List Li0List .)
+    Href            reduce using rule 33 (Li0List -> Li0List Li0List .)
+    LinkWordName    reduce using rule 33 (Li0List -> Li0List Li0List .)
+    Li0             shift and go to state 15
 
-  ! Li0             [ reduce using rule 29 (Li0List -> Li0List Li0List .) ]
+  ! Li0             [ reduce using rule 33 (Li0List -> Li0List Li0List .) ]
 
-    Li0List                        shift and go to state 30
+    Li0List                        shift and go to state 33
 
-state 31
+state 34
 
-    (24) blockquoteline -> Blockquote wordlineinit . Cr
-    (16) wordlineinit -> wordlineinit . Text
-    (17) wordlineinit -> wordlineinit . specialtext
-    (20) specialtext -> . Strong
-    (21) specialtext -> . CodeLine
-    (22) specialtext -> . EmWord
-    (23) specialtext -> . linkword
-    (27) linkword -> . LinkWordName Link
+    (14) CodeBlockEnd -> CodeBlockText Cr . CodeBlock
+    (13) CodeBlockText -> CodeBlockText Cr . wordlineinit
+    (17) wordlineinit -> . Text
+    (18) wordlineinit -> . specialtext
+    (19) wordlineinit -> . wordlineinit Text
+    (20) wordlineinit -> . wordlineinit specialtext
+    (21) wordlineinit -> . Href
+    (23) specialtext -> . Strong
+    (24) specialtext -> . CodeLine
+    (25) specialtext -> . EmWord
+    (26) specialtext -> . linkword
+    (27) specialtext -> . Color
+    (31) linkword -> . LinkWordName Link
 
-    Cr              shift and go to state 45
-    Text            shift and go to state 40
-    Strong          shift and go to state 9
-    CodeLine        shift and go to state 15
-    EmWord          shift and go to state 22
-    LinkWordName    shift and go to state 27
+    CodeBlock       shift and go to state 51
+    Text            shift and go to state 23
+    Href            shift and go to state 8
+    Strong          shift and go to state 10
+    CodeLine        shift and go to state 16
+    EmWord          shift and go to state 25
+    Color           shift and go to state 22
+    LinkWordName    shift and go to state 30
 
-    linkword                       shift and go to state 25
-    specialtext                    shift and go to state 41
+    linkword                       shift and go to state 28
+    wordlineinit                   shift and go to state 50
+    specialtext                    shift and go to state 7
 
-state 32
+state 35
+
+    (28) blockquoteline -> Blockquote wordlineinit . Cr
+    (19) wordlineinit -> wordlineinit . Text
+    (20) wordlineinit -> wordlineinit . specialtext
+    (23) specialtext -> . Strong
+    (24) specialtext -> . CodeLine
+    (25) specialtext -> . EmWord
+    (26) specialtext -> . linkword
+    (27) specialtext -> . Color
+    (31) linkword -> . LinkWordName Link
+
+    Cr              shift and go to state 52
+    Text            shift and go to state 45
+    Strong          shift and go to state 10
+    CodeLine        shift and go to state 16
+    EmWord          shift and go to state 25
+    Color           shift and go to state 22
+    LinkWordName    shift and go to state 30
+
+    linkword                       shift and go to state 28
+    specialtext                    shift and go to state 46
+
+state 36
 
     (9) line -> Hr Cr .
 
     $end            reduce using rule 9 (line -> Hr Cr .)
+    Hr              reduce using rule 9 (line -> Hr Cr .)
     Hn              reduce using rule 9 (line -> Hr Cr .)
     Gump            reduce using rule 9 (line -> Hr Cr .)
-    Hr              reduce using rule 9 (line -> Hr Cr .)
+    Blockquote      reduce using rule 9 (line -> Hr Cr .)
     CodeBlock       reduce using rule 9 (line -> Hr Cr .)
     Li0             reduce using rule 9 (line -> Hr Cr .)
     Li0spe          reduce using rule 9 (line -> Hr Cr .)
@@ -704,89 +882,151 @@ state 32
     Strong          reduce using rule 9 (line -> Hr Cr .)
     CodeLine        reduce using rule 9 (line -> Hr Cr .)
     EmWord          reduce using rule 9 (line -> Hr Cr .)
+    Color           reduce using rule 9 (line -> Hr Cr .)
     Href            reduce using rule 9 (line -> Hr Cr .)
-    Blockquote      reduce using rule 9 (line -> Hr Cr .)
     LinkWordName    reduce using rule 9 (line -> Hr Cr .)
-
-
-state 33
-
-    (13) Hline -> Hn Text . Cr
-
-    Cr              shift and go to state 46
-
-
-state 34
-
-    (33) Li0speList -> Li0speList Li0speList .
-    (33) Li0speList -> Li0speList . Li0speList
-    (32) Li0speList -> . Li0spe Text Cr
-    (33) Li0speList -> . Li0speList Li0speList
-    (34) Li0speList -> . Li0spe Text Cr Li1Block
-
-  ! shift/reduce conflict for Li0spe resolved as shift
-    $end            reduce using rule 33 (Li0speList -> Li0speList Li0speList .)
-    Hn              reduce using rule 33 (Li0speList -> Li0speList Li0speList .)
-    Gump            reduce using rule 33 (Li0speList -> Li0speList Li0speList .)
-    Hr              reduce using rule 33 (Li0speList -> Li0speList Li0speList .)
-    CodeBlock       reduce using rule 33 (Li0speList -> Li0speList Li0speList .)
-    Li0             reduce using rule 33 (Li0speList -> Li0speList Li0speList .)
-    Text            reduce using rule 33 (Li0speList -> Li0speList Li0speList .)
-    Strong          reduce using rule 33 (Li0speList -> Li0speList Li0speList .)
-    CodeLine        reduce using rule 33 (Li0speList -> Li0speList Li0speList .)
-    EmWord          reduce using rule 33 (Li0speList -> Li0speList Li0speList .)
-    Href            reduce using rule 33 (Li0speList -> Li0speList Li0speList .)
-    Blockquote      reduce using rule 33 (Li0speList -> Li0speList Li0speList .)
-    LinkWordName    reduce using rule 33 (Li0speList -> Li0speList Li0speList .)
-    Li0spe          shift and go to state 2
-
-  ! Li0spe          [ reduce using rule 33 (Li0speList -> Li0speList Li0speList .) ]
-
-    Li0speList                     shift and go to state 34
-
-state 35
-
-    (12) gumpline -> Gump Link . Cr
-
-    Cr              shift and go to state 47
-
-
-state 36
-
-    (28) Li0List -> Li0 Text . Cr
-    (30) Li0List -> Li0 Text . Cr Li1Block
-
-    Cr              shift and go to state 48
 
 
 state 37
 
-    (10) line -> CodeBlock Cr .
+    (16) Hline -> Hn wordlineinit . Cr
+    (19) wordlineinit -> wordlineinit . Text
+    (20) wordlineinit -> wordlineinit . specialtext
+    (23) specialtext -> . Strong
+    (24) specialtext -> . CodeLine
+    (25) specialtext -> . EmWord
+    (26) specialtext -> . linkword
+    (27) specialtext -> . Color
+    (31) linkword -> . LinkWordName Link
 
-    $end            reduce using rule 10 (line -> CodeBlock Cr .)
-    Hn              reduce using rule 10 (line -> CodeBlock Cr .)
-    Gump            reduce using rule 10 (line -> CodeBlock Cr .)
-    Hr              reduce using rule 10 (line -> CodeBlock Cr .)
-    CodeBlock       reduce using rule 10 (line -> CodeBlock Cr .)
-    Li0             reduce using rule 10 (line -> CodeBlock Cr .)
-    Li0spe          reduce using rule 10 (line -> CodeBlock Cr .)
-    Text            reduce using rule 10 (line -> CodeBlock Cr .)
-    Strong          reduce using rule 10 (line -> CodeBlock Cr .)
-    CodeLine        reduce using rule 10 (line -> CodeBlock Cr .)
-    EmWord          reduce using rule 10 (line -> CodeBlock Cr .)
-    Href            reduce using rule 10 (line -> CodeBlock Cr .)
-    Blockquote      reduce using rule 10 (line -> CodeBlock Cr .)
-    LinkWordName    reduce using rule 10 (line -> CodeBlock Cr .)
+    Cr              shift and go to state 53
+    Text            shift and go to state 45
+    Strong          shift and go to state 10
+    CodeLine        shift and go to state 16
+    EmWord          shift and go to state 25
+    Color           shift and go to state 22
+    LinkWordName    shift and go to state 30
 
+    linkword                       shift and go to state 28
+    specialtext                    shift and go to state 46
 
 state 38
+
+    (37) Li0speList -> Li0speList Li0speList .
+    (37) Li0speList -> Li0speList . Li0speList
+    (36) Li0speList -> . Li0spe wordlineinit Cr
+    (37) Li0speList -> . Li0speList Li0speList
+    (38) Li0speList -> . Li0spe wordlineinit Cr Li1Block
+
+  ! shift/reduce conflict for Li0spe resolved as shift
+    $end            reduce using rule 37 (Li0speList -> Li0speList Li0speList .)
+    Hr              reduce using rule 37 (Li0speList -> Li0speList Li0speList .)
+    Hn              reduce using rule 37 (Li0speList -> Li0speList Li0speList .)
+    Gump            reduce using rule 37 (Li0speList -> Li0speList Li0speList .)
+    Blockquote      reduce using rule 37 (Li0speList -> Li0speList Li0speList .)
+    CodeBlock       reduce using rule 37 (Li0speList -> Li0speList Li0speList .)
+    Li0             reduce using rule 37 (Li0speList -> Li0speList Li0speList .)
+    Text            reduce using rule 37 (Li0speList -> Li0speList Li0speList .)
+    Strong          reduce using rule 37 (Li0speList -> Li0speList Li0speList .)
+    CodeLine        reduce using rule 37 (Li0speList -> Li0speList Li0speList .)
+    EmWord          reduce using rule 37 (Li0speList -> Li0speList Li0speList .)
+    Color           reduce using rule 37 (Li0speList -> Li0speList Li0speList .)
+    Href            reduce using rule 37 (Li0speList -> Li0speList Li0speList .)
+    LinkWordName    reduce using rule 37 (Li0speList -> Li0speList Li0speList .)
+    Li0spe          shift and go to state 2
+
+  ! Li0spe          [ reduce using rule 37 (Li0speList -> Li0speList Li0speList .) ]
+
+    Li0speList                     shift and go to state 38
+
+state 39
+
+    (15) gumpline -> Gump Link . Cr
+
+    Cr              shift and go to state 54
+
+
+state 40
+
+    (32) Li0List -> Li0 wordlineinit . Cr
+    (34) Li0List -> Li0 wordlineinit . Cr Li1Block
+    (19) wordlineinit -> wordlineinit . Text
+    (20) wordlineinit -> wordlineinit . specialtext
+    (23) specialtext -> . Strong
+    (24) specialtext -> . CodeLine
+    (25) specialtext -> . EmWord
+    (26) specialtext -> . linkword
+    (27) specialtext -> . Color
+    (31) linkword -> . LinkWordName Link
+
+    Cr              shift and go to state 55
+    Text            shift and go to state 45
+    Strong          shift and go to state 10
+    CodeLine        shift and go to state 16
+    EmWord          shift and go to state 25
+    Color           shift and go to state 22
+    LinkWordName    shift and go to state 30
+
+    linkword                       shift and go to state 28
+    specialtext                    shift and go to state 46
+
+state 41
+
+    (10) line -> CodeBlockEnd Cr .
+
+    $end            reduce using rule 10 (line -> CodeBlockEnd Cr .)
+    Hr              reduce using rule 10 (line -> CodeBlockEnd Cr .)
+    Hn              reduce using rule 10 (line -> CodeBlockEnd Cr .)
+    Gump            reduce using rule 10 (line -> CodeBlockEnd Cr .)
+    Blockquote      reduce using rule 10 (line -> CodeBlockEnd Cr .)
+    CodeBlock       reduce using rule 10 (line -> CodeBlockEnd Cr .)
+    Li0             reduce using rule 10 (line -> CodeBlockEnd Cr .)
+    Li0spe          reduce using rule 10 (line -> CodeBlockEnd Cr .)
+    Text            reduce using rule 10 (line -> CodeBlockEnd Cr .)
+    Strong          reduce using rule 10 (line -> CodeBlockEnd Cr .)
+    CodeLine        reduce using rule 10 (line -> CodeBlockEnd Cr .)
+    EmWord          reduce using rule 10 (line -> CodeBlockEnd Cr .)
+    Color           reduce using rule 10 (line -> CodeBlockEnd Cr .)
+    Href            reduce using rule 10 (line -> CodeBlockEnd Cr .)
+    LinkWordName    reduce using rule 10 (line -> CodeBlockEnd Cr .)
+
+
+state 42
+
+    (12) CodeBlockText -> CodeBlock Cr . wordlineinit
+    (17) wordlineinit -> . Text
+    (18) wordlineinit -> . specialtext
+    (19) wordlineinit -> . wordlineinit Text
+    (20) wordlineinit -> . wordlineinit specialtext
+    (21) wordlineinit -> . Href
+    (23) specialtext -> . Strong
+    (24) specialtext -> . CodeLine
+    (25) specialtext -> . EmWord
+    (26) specialtext -> . linkword
+    (27) specialtext -> . Color
+    (31) linkword -> . LinkWordName Link
+
+    Text            shift and go to state 23
+    Href            shift and go to state 8
+    Strong          shift and go to state 10
+    CodeLine        shift and go to state 16
+    EmWord          shift and go to state 25
+    Color           shift and go to state 22
+    LinkWordName    shift and go to state 30
+
+    linkword                       shift and go to state 28
+    wordlineinit                   shift and go to state 56
+    specialtext                    shift and go to state 7
+
+state 43
 
     (4) mline -> mline line .
 
     $end            reduce using rule 4 (mline -> mline line .)
+    Hr              reduce using rule 4 (mline -> mline line .)
     Hn              reduce using rule 4 (mline -> mline line .)
     Gump            reduce using rule 4 (mline -> mline line .)
-    Hr              reduce using rule 4 (mline -> mline line .)
+    Blockquote      reduce using rule 4 (mline -> mline line .)
     CodeBlock       reduce using rule 4 (mline -> mline line .)
     Li0             reduce using rule 4 (mline -> mline line .)
     Li0spe          reduce using rule 4 (mline -> mline line .)
@@ -794,709 +1034,932 @@ state 38
     Strong          reduce using rule 4 (mline -> mline line .)
     CodeLine        reduce using rule 4 (mline -> mline line .)
     EmWord          reduce using rule 4 (mline -> mline line .)
+    Color           reduce using rule 4 (mline -> mline line .)
     Href            reduce using rule 4 (mline -> mline line .)
-    Blockquote      reduce using rule 4 (mline -> mline line .)
     LinkWordName    reduce using rule 4 (mline -> mline line .)
-
-
-state 39
-
-    (25) blockquoteline -> blockquoteline blockquoteline .
-    (25) blockquoteline -> blockquoteline . blockquoteline
-    (24) blockquoteline -> . Blockquote wordlineinit Cr
-    (25) blockquoteline -> . blockquoteline blockquoteline
-
-  ! shift/reduce conflict for Blockquote resolved as shift
-    $end            reduce using rule 25 (blockquoteline -> blockquoteline blockquoteline .)
-    Hn              reduce using rule 25 (blockquoteline -> blockquoteline blockquoteline .)
-    Gump            reduce using rule 25 (blockquoteline -> blockquoteline blockquoteline .)
-    Hr              reduce using rule 25 (blockquoteline -> blockquoteline blockquoteline .)
-    CodeBlock       reduce using rule 25 (blockquoteline -> blockquoteline blockquoteline .)
-    Li0             reduce using rule 25 (blockquoteline -> blockquoteline blockquoteline .)
-    Li0spe          reduce using rule 25 (blockquoteline -> blockquoteline blockquoteline .)
-    Text            reduce using rule 25 (blockquoteline -> blockquoteline blockquoteline .)
-    Strong          reduce using rule 25 (blockquoteline -> blockquoteline blockquoteline .)
-    CodeLine        reduce using rule 25 (blockquoteline -> blockquoteline blockquoteline .)
-    EmWord          reduce using rule 25 (blockquoteline -> blockquoteline blockquoteline .)
-    Href            reduce using rule 25 (blockquoteline -> blockquoteline blockquoteline .)
-    LinkWordName    reduce using rule 25 (blockquoteline -> blockquoteline blockquoteline .)
-    Blockquote      shift and go to state 4
-
-  ! Blockquote      [ reduce using rule 25 (blockquoteline -> blockquoteline blockquoteline .) ]
-
-    blockquoteline                 shift and go to state 39
-
-state 40
-
-    (16) wordlineinit -> wordlineinit Text .
-
-    Text            reduce using rule 16 (wordlineinit -> wordlineinit Text .)
-    Strong          reduce using rule 16 (wordlineinit -> wordlineinit Text .)
-    CodeLine        reduce using rule 16 (wordlineinit -> wordlineinit Text .)
-    EmWord          reduce using rule 16 (wordlineinit -> wordlineinit Text .)
-    LinkWordName    reduce using rule 16 (wordlineinit -> wordlineinit Text .)
-    Cr              reduce using rule 16 (wordlineinit -> wordlineinit Text .)
-
-
-state 41
-
-    (17) wordlineinit -> wordlineinit specialtext .
-
-    Text            reduce using rule 17 (wordlineinit -> wordlineinit specialtext .)
-    Strong          reduce using rule 17 (wordlineinit -> wordlineinit specialtext .)
-    CodeLine        reduce using rule 17 (wordlineinit -> wordlineinit specialtext .)
-    EmWord          reduce using rule 17 (wordlineinit -> wordlineinit specialtext .)
-    LinkWordName    reduce using rule 17 (wordlineinit -> wordlineinit specialtext .)
-    Cr              reduce using rule 17 (wordlineinit -> wordlineinit specialtext .)
-
-
-state 42
-
-    (19) wordlineEnd -> wordlineinit Cr .
-
-    $end            reduce using rule 19 (wordlineEnd -> wordlineinit Cr .)
-    Hn              reduce using rule 19 (wordlineEnd -> wordlineinit Cr .)
-    Gump            reduce using rule 19 (wordlineEnd -> wordlineinit Cr .)
-    Hr              reduce using rule 19 (wordlineEnd -> wordlineinit Cr .)
-    CodeBlock       reduce using rule 19 (wordlineEnd -> wordlineinit Cr .)
-    Li0             reduce using rule 19 (wordlineEnd -> wordlineinit Cr .)
-    Li0spe          reduce using rule 19 (wordlineEnd -> wordlineinit Cr .)
-    Text            reduce using rule 19 (wordlineEnd -> wordlineinit Cr .)
-    Strong          reduce using rule 19 (wordlineEnd -> wordlineinit Cr .)
-    CodeLine        reduce using rule 19 (wordlineEnd -> wordlineinit Cr .)
-    EmWord          reduce using rule 19 (wordlineEnd -> wordlineinit Cr .)
-    Href            reduce using rule 19 (wordlineEnd -> wordlineinit Cr .)
-    Blockquote      reduce using rule 19 (wordlineEnd -> wordlineinit Cr .)
-    LinkWordName    reduce using rule 19 (wordlineEnd -> wordlineinit Cr .)
-
-
-state 43
-
-    (27) linkword -> LinkWordName Link .
-
-    Text            reduce using rule 27 (linkword -> LinkWordName Link .)
-    Strong          reduce using rule 27 (linkword -> LinkWordName Link .)
-    CodeLine        reduce using rule 27 (linkword -> LinkWordName Link .)
-    EmWord          reduce using rule 27 (linkword -> LinkWordName Link .)
-    LinkWordName    reduce using rule 27 (linkword -> LinkWordName Link .)
-    Cr              reduce using rule 27 (linkword -> LinkWordName Link .)
 
 
 state 44
 
-    (32) Li0speList -> Li0spe Text Cr .
-    (34) Li0speList -> Li0spe Text Cr . Li1Block
-    (39) Li1Block -> . Li1List
-    (43) Li1Block -> . Li1speList
-    (36) Li1List -> . Li1 Text Cr
-    (37) Li1List -> . Li1List Li1List
-    (38) Li1List -> . Li1 Text Cr Li2Block
-    (40) Li1speList -> . Li1spe Text Cr
-    (41) Li1speList -> . Li1speList Li1speList
-    (42) Li1speList -> . Li1spe Text Cr Li2Block
+    (29) blockquoteline -> blockquoteline blockquoteline .
+    (29) blockquoteline -> blockquoteline . blockquoteline
+    (28) blockquoteline -> . Blockquote wordlineinit Cr
+    (29) blockquoteline -> . blockquoteline blockquoteline
 
-    Li0spe          reduce using rule 32 (Li0speList -> Li0spe Text Cr .)
-    $end            reduce using rule 32 (Li0speList -> Li0spe Text Cr .)
-    Hn              reduce using rule 32 (Li0speList -> Li0spe Text Cr .)
-    Gump            reduce using rule 32 (Li0speList -> Li0spe Text Cr .)
-    Hr              reduce using rule 32 (Li0speList -> Li0spe Text Cr .)
-    CodeBlock       reduce using rule 32 (Li0speList -> Li0spe Text Cr .)
-    Li0             reduce using rule 32 (Li0speList -> Li0spe Text Cr .)
-    Text            reduce using rule 32 (Li0speList -> Li0spe Text Cr .)
-    Strong          reduce using rule 32 (Li0speList -> Li0spe Text Cr .)
-    CodeLine        reduce using rule 32 (Li0speList -> Li0spe Text Cr .)
-    EmWord          reduce using rule 32 (Li0speList -> Li0spe Text Cr .)
-    Href            reduce using rule 32 (Li0speList -> Li0spe Text Cr .)
-    Blockquote      reduce using rule 32 (Li0speList -> Li0spe Text Cr .)
-    LinkWordName    reduce using rule 32 (Li0speList -> Li0spe Text Cr .)
-    Li1             shift and go to state 53
-    Li1spe          shift and go to state 50
+  ! shift/reduce conflict for Blockquote resolved as shift
+    $end            reduce using rule 29 (blockquoteline -> blockquoteline blockquoteline .)
+    Hr              reduce using rule 29 (blockquoteline -> blockquoteline blockquoteline .)
+    Hn              reduce using rule 29 (blockquoteline -> blockquoteline blockquoteline .)
+    Gump            reduce using rule 29 (blockquoteline -> blockquoteline blockquoteline .)
+    CodeBlock       reduce using rule 29 (blockquoteline -> blockquoteline blockquoteline .)
+    Li0             reduce using rule 29 (blockquoteline -> blockquoteline blockquoteline .)
+    Li0spe          reduce using rule 29 (blockquoteline -> blockquoteline blockquoteline .)
+    Text            reduce using rule 29 (blockquoteline -> blockquoteline blockquoteline .)
+    Strong          reduce using rule 29 (blockquoteline -> blockquoteline blockquoteline .)
+    CodeLine        reduce using rule 29 (blockquoteline -> blockquoteline blockquoteline .)
+    EmWord          reduce using rule 29 (blockquoteline -> blockquoteline blockquoteline .)
+    Color           reduce using rule 29 (blockquoteline -> blockquoteline blockquoteline .)
+    Href            reduce using rule 29 (blockquoteline -> blockquoteline blockquoteline .)
+    LinkWordName    reduce using rule 29 (blockquoteline -> blockquoteline blockquoteline .)
+    Blockquote      shift and go to state 5
 
-    Li1Block                       shift and go to state 49
-    Li1speList                     shift and go to state 52
-    Li1List                        shift and go to state 51
+  ! Blockquote      [ reduce using rule 29 (blockquoteline -> blockquoteline blockquoteline .) ]
+
+    blockquoteline                 shift and go to state 44
 
 state 45
 
-    (24) blockquoteline -> Blockquote wordlineinit Cr .
+    (19) wordlineinit -> wordlineinit Text .
 
-    Blockquote      reduce using rule 24 (blockquoteline -> Blockquote wordlineinit Cr .)
-    $end            reduce using rule 24 (blockquoteline -> Blockquote wordlineinit Cr .)
-    Hn              reduce using rule 24 (blockquoteline -> Blockquote wordlineinit Cr .)
-    Gump            reduce using rule 24 (blockquoteline -> Blockquote wordlineinit Cr .)
-    Hr              reduce using rule 24 (blockquoteline -> Blockquote wordlineinit Cr .)
-    CodeBlock       reduce using rule 24 (blockquoteline -> Blockquote wordlineinit Cr .)
-    Li0             reduce using rule 24 (blockquoteline -> Blockquote wordlineinit Cr .)
-    Li0spe          reduce using rule 24 (blockquoteline -> Blockquote wordlineinit Cr .)
-    Text            reduce using rule 24 (blockquoteline -> Blockquote wordlineinit Cr .)
-    Strong          reduce using rule 24 (blockquoteline -> Blockquote wordlineinit Cr .)
-    CodeLine        reduce using rule 24 (blockquoteline -> Blockquote wordlineinit Cr .)
-    EmWord          reduce using rule 24 (blockquoteline -> Blockquote wordlineinit Cr .)
-    Href            reduce using rule 24 (blockquoteline -> Blockquote wordlineinit Cr .)
-    LinkWordName    reduce using rule 24 (blockquoteline -> Blockquote wordlineinit Cr .)
+    Cr              reduce using rule 19 (wordlineinit -> wordlineinit Text .)
+    Text            reduce using rule 19 (wordlineinit -> wordlineinit Text .)
+    Strong          reduce using rule 19 (wordlineinit -> wordlineinit Text .)
+    CodeLine        reduce using rule 19 (wordlineinit -> wordlineinit Text .)
+    EmWord          reduce using rule 19 (wordlineinit -> wordlineinit Text .)
+    Color           reduce using rule 19 (wordlineinit -> wordlineinit Text .)
+    LinkWordName    reduce using rule 19 (wordlineinit -> wordlineinit Text .)
 
 
 state 46
 
-    (13) Hline -> Hn Text Cr .
+    (20) wordlineinit -> wordlineinit specialtext .
 
-    $end            reduce using rule 13 (Hline -> Hn Text Cr .)
-    Hn              reduce using rule 13 (Hline -> Hn Text Cr .)
-    Gump            reduce using rule 13 (Hline -> Hn Text Cr .)
-    Hr              reduce using rule 13 (Hline -> Hn Text Cr .)
-    CodeBlock       reduce using rule 13 (Hline -> Hn Text Cr .)
-    Li0             reduce using rule 13 (Hline -> Hn Text Cr .)
-    Li0spe          reduce using rule 13 (Hline -> Hn Text Cr .)
-    Text            reduce using rule 13 (Hline -> Hn Text Cr .)
-    Strong          reduce using rule 13 (Hline -> Hn Text Cr .)
-    CodeLine        reduce using rule 13 (Hline -> Hn Text Cr .)
-    EmWord          reduce using rule 13 (Hline -> Hn Text Cr .)
-    Href            reduce using rule 13 (Hline -> Hn Text Cr .)
-    Blockquote      reduce using rule 13 (Hline -> Hn Text Cr .)
-    LinkWordName    reduce using rule 13 (Hline -> Hn Text Cr .)
+    Cr              reduce using rule 20 (wordlineinit -> wordlineinit specialtext .)
+    Text            reduce using rule 20 (wordlineinit -> wordlineinit specialtext .)
+    Strong          reduce using rule 20 (wordlineinit -> wordlineinit specialtext .)
+    CodeLine        reduce using rule 20 (wordlineinit -> wordlineinit specialtext .)
+    EmWord          reduce using rule 20 (wordlineinit -> wordlineinit specialtext .)
+    Color           reduce using rule 20 (wordlineinit -> wordlineinit specialtext .)
+    LinkWordName    reduce using rule 20 (wordlineinit -> wordlineinit specialtext .)
 
 
 state 47
 
-    (12) gumpline -> Gump Link Cr .
+    (22) wordlineEnd -> wordlineinit Cr .
 
-    $end            reduce using rule 12 (gumpline -> Gump Link Cr .)
-    Hn              reduce using rule 12 (gumpline -> Gump Link Cr .)
-    Gump            reduce using rule 12 (gumpline -> Gump Link Cr .)
-    Hr              reduce using rule 12 (gumpline -> Gump Link Cr .)
-    CodeBlock       reduce using rule 12 (gumpline -> Gump Link Cr .)
-    Li0             reduce using rule 12 (gumpline -> Gump Link Cr .)
-    Li0spe          reduce using rule 12 (gumpline -> Gump Link Cr .)
-    Text            reduce using rule 12 (gumpline -> Gump Link Cr .)
-    Strong          reduce using rule 12 (gumpline -> Gump Link Cr .)
-    CodeLine        reduce using rule 12 (gumpline -> Gump Link Cr .)
-    EmWord          reduce using rule 12 (gumpline -> Gump Link Cr .)
-    Href            reduce using rule 12 (gumpline -> Gump Link Cr .)
-    Blockquote      reduce using rule 12 (gumpline -> Gump Link Cr .)
-    LinkWordName    reduce using rule 12 (gumpline -> Gump Link Cr .)
+    $end            reduce using rule 22 (wordlineEnd -> wordlineinit Cr .)
+    Hr              reduce using rule 22 (wordlineEnd -> wordlineinit Cr .)
+    Hn              reduce using rule 22 (wordlineEnd -> wordlineinit Cr .)
+    Gump            reduce using rule 22 (wordlineEnd -> wordlineinit Cr .)
+    Blockquote      reduce using rule 22 (wordlineEnd -> wordlineinit Cr .)
+    CodeBlock       reduce using rule 22 (wordlineEnd -> wordlineinit Cr .)
+    Li0             reduce using rule 22 (wordlineEnd -> wordlineinit Cr .)
+    Li0spe          reduce using rule 22 (wordlineEnd -> wordlineinit Cr .)
+    Text            reduce using rule 22 (wordlineEnd -> wordlineinit Cr .)
+    Strong          reduce using rule 22 (wordlineEnd -> wordlineinit Cr .)
+    CodeLine        reduce using rule 22 (wordlineEnd -> wordlineinit Cr .)
+    EmWord          reduce using rule 22 (wordlineEnd -> wordlineinit Cr .)
+    Color           reduce using rule 22 (wordlineEnd -> wordlineinit Cr .)
+    Href            reduce using rule 22 (wordlineEnd -> wordlineinit Cr .)
+    LinkWordName    reduce using rule 22 (wordlineEnd -> wordlineinit Cr .)
 
 
 state 48
 
-    (28) Li0List -> Li0 Text Cr .
-    (30) Li0List -> Li0 Text Cr . Li1Block
-    (39) Li1Block -> . Li1List
-    (43) Li1Block -> . Li1speList
-    (36) Li1List -> . Li1 Text Cr
-    (37) Li1List -> . Li1List Li1List
-    (38) Li1List -> . Li1 Text Cr Li2Block
-    (40) Li1speList -> . Li1spe Text Cr
-    (41) Li1speList -> . Li1speList Li1speList
-    (42) Li1speList -> . Li1spe Text Cr Li2Block
+    (31) linkword -> LinkWordName Link .
 
-    Li0             reduce using rule 28 (Li0List -> Li0 Text Cr .)
-    $end            reduce using rule 28 (Li0List -> Li0 Text Cr .)
-    Hn              reduce using rule 28 (Li0List -> Li0 Text Cr .)
-    Gump            reduce using rule 28 (Li0List -> Li0 Text Cr .)
-    Hr              reduce using rule 28 (Li0List -> Li0 Text Cr .)
-    CodeBlock       reduce using rule 28 (Li0List -> Li0 Text Cr .)
-    Li0spe          reduce using rule 28 (Li0List -> Li0 Text Cr .)
-    Text            reduce using rule 28 (Li0List -> Li0 Text Cr .)
-    Strong          reduce using rule 28 (Li0List -> Li0 Text Cr .)
-    CodeLine        reduce using rule 28 (Li0List -> Li0 Text Cr .)
-    EmWord          reduce using rule 28 (Li0List -> Li0 Text Cr .)
-    Href            reduce using rule 28 (Li0List -> Li0 Text Cr .)
-    Blockquote      reduce using rule 28 (Li0List -> Li0 Text Cr .)
-    LinkWordName    reduce using rule 28 (Li0List -> Li0 Text Cr .)
-    Li1             shift and go to state 53
-    Li1spe          shift and go to state 50
+    Cr              reduce using rule 31 (linkword -> LinkWordName Link .)
+    Text            reduce using rule 31 (linkword -> LinkWordName Link .)
+    Strong          reduce using rule 31 (linkword -> LinkWordName Link .)
+    CodeLine        reduce using rule 31 (linkword -> LinkWordName Link .)
+    EmWord          reduce using rule 31 (linkword -> LinkWordName Link .)
+    Color           reduce using rule 31 (linkword -> LinkWordName Link .)
+    LinkWordName    reduce using rule 31 (linkword -> LinkWordName Link .)
 
-    Li1Block                       shift and go to state 54
-    Li1speList                     shift and go to state 52
-    Li1List                        shift and go to state 51
 
 state 49
 
-    (34) Li0speList -> Li0spe Text Cr Li1Block .
+    (36) Li0speList -> Li0spe wordlineinit Cr .
+    (38) Li0speList -> Li0spe wordlineinit Cr . Li1Block
+    (43) Li1Block -> . Li1List
+    (47) Li1Block -> . Li1speList
+    (40) Li1List -> . Li1 wordlineinit Cr
+    (41) Li1List -> . Li1List Li1List
+    (42) Li1List -> . Li1 wordlineinit Cr Li2Block
+    (44) Li1speList -> . Li1spe wordlineinit Cr
+    (45) Li1speList -> . Li1speList Li1speList
+    (46) Li1speList -> . Li1spe wordlineinit Cr Li2Block
 
-    Li0spe          reduce using rule 34 (Li0speList -> Li0spe Text Cr Li1Block .)
-    $end            reduce using rule 34 (Li0speList -> Li0spe Text Cr Li1Block .)
-    Hn              reduce using rule 34 (Li0speList -> Li0spe Text Cr Li1Block .)
-    Gump            reduce using rule 34 (Li0speList -> Li0spe Text Cr Li1Block .)
-    Hr              reduce using rule 34 (Li0speList -> Li0spe Text Cr Li1Block .)
-    CodeBlock       reduce using rule 34 (Li0speList -> Li0spe Text Cr Li1Block .)
-    Li0             reduce using rule 34 (Li0speList -> Li0spe Text Cr Li1Block .)
-    Text            reduce using rule 34 (Li0speList -> Li0spe Text Cr Li1Block .)
-    Strong          reduce using rule 34 (Li0speList -> Li0spe Text Cr Li1Block .)
-    CodeLine        reduce using rule 34 (Li0speList -> Li0spe Text Cr Li1Block .)
-    EmWord          reduce using rule 34 (Li0speList -> Li0spe Text Cr Li1Block .)
-    Href            reduce using rule 34 (Li0speList -> Li0spe Text Cr Li1Block .)
-    Blockquote      reduce using rule 34 (Li0speList -> Li0spe Text Cr Li1Block .)
-    LinkWordName    reduce using rule 34 (Li0speList -> Li0spe Text Cr Li1Block .)
+    Li0spe          reduce using rule 36 (Li0speList -> Li0spe wordlineinit Cr .)
+    $end            reduce using rule 36 (Li0speList -> Li0spe wordlineinit Cr .)
+    Hr              reduce using rule 36 (Li0speList -> Li0spe wordlineinit Cr .)
+    Hn              reduce using rule 36 (Li0speList -> Li0spe wordlineinit Cr .)
+    Gump            reduce using rule 36 (Li0speList -> Li0spe wordlineinit Cr .)
+    Blockquote      reduce using rule 36 (Li0speList -> Li0spe wordlineinit Cr .)
+    CodeBlock       reduce using rule 36 (Li0speList -> Li0spe wordlineinit Cr .)
+    Li0             reduce using rule 36 (Li0speList -> Li0spe wordlineinit Cr .)
+    Text            reduce using rule 36 (Li0speList -> Li0spe wordlineinit Cr .)
+    Strong          reduce using rule 36 (Li0speList -> Li0spe wordlineinit Cr .)
+    CodeLine        reduce using rule 36 (Li0speList -> Li0spe wordlineinit Cr .)
+    EmWord          reduce using rule 36 (Li0speList -> Li0spe wordlineinit Cr .)
+    Color           reduce using rule 36 (Li0speList -> Li0spe wordlineinit Cr .)
+    Href            reduce using rule 36 (Li0speList -> Li0spe wordlineinit Cr .)
+    LinkWordName    reduce using rule 36 (Li0speList -> Li0spe wordlineinit Cr .)
+    Li1             shift and go to state 61
+    Li1spe          shift and go to state 58
 
+    Li1Block                       shift and go to state 57
+    Li1speList                     shift and go to state 60
+    Li1List                        shift and go to state 59
 
 state 50
 
-    (40) Li1speList -> Li1spe . Text Cr
-    (42) Li1speList -> Li1spe . Text Cr Li2Block
+    (13) CodeBlockText -> CodeBlockText Cr wordlineinit .
+    (19) wordlineinit -> wordlineinit . Text
+    (20) wordlineinit -> wordlineinit . specialtext
+    (23) specialtext -> . Strong
+    (24) specialtext -> . CodeLine
+    (25) specialtext -> . EmWord
+    (26) specialtext -> . linkword
+    (27) specialtext -> . Color
+    (31) linkword -> . LinkWordName Link
 
-    Text            shift and go to state 55
+    Cr              reduce using rule 13 (CodeBlockText -> CodeBlockText Cr wordlineinit .)
+    Text            shift and go to state 45
+    Strong          shift and go to state 10
+    CodeLine        shift and go to state 16
+    EmWord          shift and go to state 25
+    Color           shift and go to state 22
+    LinkWordName    shift and go to state 30
 
+    linkword                       shift and go to state 28
+    specialtext                    shift and go to state 46
 
 state 51
 
-    (39) Li1Block -> Li1List .
-    (37) Li1List -> Li1List . Li1List
-    (36) Li1List -> . Li1 Text Cr
-    (37) Li1List -> . Li1List Li1List
-    (38) Li1List -> . Li1 Text Cr Li2Block
+    (14) CodeBlockEnd -> CodeBlockText Cr CodeBlock .
 
-    Li0             reduce using rule 39 (Li1Block -> Li1List .)
-    Li0spe          reduce using rule 39 (Li1Block -> Li1List .)
-    $end            reduce using rule 39 (Li1Block -> Li1List .)
-    Hn              reduce using rule 39 (Li1Block -> Li1List .)
-    Gump            reduce using rule 39 (Li1Block -> Li1List .)
-    Hr              reduce using rule 39 (Li1Block -> Li1List .)
-    CodeBlock       reduce using rule 39 (Li1Block -> Li1List .)
-    Text            reduce using rule 39 (Li1Block -> Li1List .)
-    Strong          reduce using rule 39 (Li1Block -> Li1List .)
-    CodeLine        reduce using rule 39 (Li1Block -> Li1List .)
-    EmWord          reduce using rule 39 (Li1Block -> Li1List .)
-    Href            reduce using rule 39 (Li1Block -> Li1List .)
-    Blockquote      reduce using rule 39 (Li1Block -> Li1List .)
-    LinkWordName    reduce using rule 39 (Li1Block -> Li1List .)
-    Li1             shift and go to state 53
+    Cr              reduce using rule 14 (CodeBlockEnd -> CodeBlockText Cr CodeBlock .)
 
-    Li1List                        shift and go to state 56
 
 state 52
 
-    (43) Li1Block -> Li1speList .
-    (41) Li1speList -> Li1speList . Li1speList
-    (40) Li1speList -> . Li1spe Text Cr
-    (41) Li1speList -> . Li1speList Li1speList
-    (42) Li1speList -> . Li1spe Text Cr Li2Block
+    (28) blockquoteline -> Blockquote wordlineinit Cr .
 
-    Li0             reduce using rule 43 (Li1Block -> Li1speList .)
-    Li0spe          reduce using rule 43 (Li1Block -> Li1speList .)
-    $end            reduce using rule 43 (Li1Block -> Li1speList .)
-    Hn              reduce using rule 43 (Li1Block -> Li1speList .)
-    Gump            reduce using rule 43 (Li1Block -> Li1speList .)
-    Hr              reduce using rule 43 (Li1Block -> Li1speList .)
-    CodeBlock       reduce using rule 43 (Li1Block -> Li1speList .)
-    Text            reduce using rule 43 (Li1Block -> Li1speList .)
-    Strong          reduce using rule 43 (Li1Block -> Li1speList .)
-    CodeLine        reduce using rule 43 (Li1Block -> Li1speList .)
-    EmWord          reduce using rule 43 (Li1Block -> Li1speList .)
-    Href            reduce using rule 43 (Li1Block -> Li1speList .)
-    Blockquote      reduce using rule 43 (Li1Block -> Li1speList .)
-    LinkWordName    reduce using rule 43 (Li1Block -> Li1speList .)
-    Li1spe          shift and go to state 50
+    Blockquote      reduce using rule 28 (blockquoteline -> Blockquote wordlineinit Cr .)
+    $end            reduce using rule 28 (blockquoteline -> Blockquote wordlineinit Cr .)
+    Hr              reduce using rule 28 (blockquoteline -> Blockquote wordlineinit Cr .)
+    Hn              reduce using rule 28 (blockquoteline -> Blockquote wordlineinit Cr .)
+    Gump            reduce using rule 28 (blockquoteline -> Blockquote wordlineinit Cr .)
+    CodeBlock       reduce using rule 28 (blockquoteline -> Blockquote wordlineinit Cr .)
+    Li0             reduce using rule 28 (blockquoteline -> Blockquote wordlineinit Cr .)
+    Li0spe          reduce using rule 28 (blockquoteline -> Blockquote wordlineinit Cr .)
+    Text            reduce using rule 28 (blockquoteline -> Blockquote wordlineinit Cr .)
+    Strong          reduce using rule 28 (blockquoteline -> Blockquote wordlineinit Cr .)
+    CodeLine        reduce using rule 28 (blockquoteline -> Blockquote wordlineinit Cr .)
+    EmWord          reduce using rule 28 (blockquoteline -> Blockquote wordlineinit Cr .)
+    Color           reduce using rule 28 (blockquoteline -> Blockquote wordlineinit Cr .)
+    Href            reduce using rule 28 (blockquoteline -> Blockquote wordlineinit Cr .)
+    LinkWordName    reduce using rule 28 (blockquoteline -> Blockquote wordlineinit Cr .)
 
-    Li1speList                     shift and go to state 57
 
 state 53
 
-    (36) Li1List -> Li1 . Text Cr
-    (38) Li1List -> Li1 . Text Cr Li2Block
+    (16) Hline -> Hn wordlineinit Cr .
 
-    Text            shift and go to state 58
+    $end            reduce using rule 16 (Hline -> Hn wordlineinit Cr .)
+    Hr              reduce using rule 16 (Hline -> Hn wordlineinit Cr .)
+    Hn              reduce using rule 16 (Hline -> Hn wordlineinit Cr .)
+    Gump            reduce using rule 16 (Hline -> Hn wordlineinit Cr .)
+    Blockquote      reduce using rule 16 (Hline -> Hn wordlineinit Cr .)
+    CodeBlock       reduce using rule 16 (Hline -> Hn wordlineinit Cr .)
+    Li0             reduce using rule 16 (Hline -> Hn wordlineinit Cr .)
+    Li0spe          reduce using rule 16 (Hline -> Hn wordlineinit Cr .)
+    Text            reduce using rule 16 (Hline -> Hn wordlineinit Cr .)
+    Strong          reduce using rule 16 (Hline -> Hn wordlineinit Cr .)
+    CodeLine        reduce using rule 16 (Hline -> Hn wordlineinit Cr .)
+    EmWord          reduce using rule 16 (Hline -> Hn wordlineinit Cr .)
+    Color           reduce using rule 16 (Hline -> Hn wordlineinit Cr .)
+    Href            reduce using rule 16 (Hline -> Hn wordlineinit Cr .)
+    LinkWordName    reduce using rule 16 (Hline -> Hn wordlineinit Cr .)
 
 
 state 54
 
-    (30) Li0List -> Li0 Text Cr Li1Block .
+    (15) gumpline -> Gump Link Cr .
 
-    Li0             reduce using rule 30 (Li0List -> Li0 Text Cr Li1Block .)
-    $end            reduce using rule 30 (Li0List -> Li0 Text Cr Li1Block .)
-    Hn              reduce using rule 30 (Li0List -> Li0 Text Cr Li1Block .)
-    Gump            reduce using rule 30 (Li0List -> Li0 Text Cr Li1Block .)
-    Hr              reduce using rule 30 (Li0List -> Li0 Text Cr Li1Block .)
-    CodeBlock       reduce using rule 30 (Li0List -> Li0 Text Cr Li1Block .)
-    Li0spe          reduce using rule 30 (Li0List -> Li0 Text Cr Li1Block .)
-    Text            reduce using rule 30 (Li0List -> Li0 Text Cr Li1Block .)
-    Strong          reduce using rule 30 (Li0List -> Li0 Text Cr Li1Block .)
-    CodeLine        reduce using rule 30 (Li0List -> Li0 Text Cr Li1Block .)
-    EmWord          reduce using rule 30 (Li0List -> Li0 Text Cr Li1Block .)
-    Href            reduce using rule 30 (Li0List -> Li0 Text Cr Li1Block .)
-    Blockquote      reduce using rule 30 (Li0List -> Li0 Text Cr Li1Block .)
-    LinkWordName    reduce using rule 30 (Li0List -> Li0 Text Cr Li1Block .)
+    $end            reduce using rule 15 (gumpline -> Gump Link Cr .)
+    Hr              reduce using rule 15 (gumpline -> Gump Link Cr .)
+    Hn              reduce using rule 15 (gumpline -> Gump Link Cr .)
+    Gump            reduce using rule 15 (gumpline -> Gump Link Cr .)
+    Blockquote      reduce using rule 15 (gumpline -> Gump Link Cr .)
+    CodeBlock       reduce using rule 15 (gumpline -> Gump Link Cr .)
+    Li0             reduce using rule 15 (gumpline -> Gump Link Cr .)
+    Li0spe          reduce using rule 15 (gumpline -> Gump Link Cr .)
+    Text            reduce using rule 15 (gumpline -> Gump Link Cr .)
+    Strong          reduce using rule 15 (gumpline -> Gump Link Cr .)
+    CodeLine        reduce using rule 15 (gumpline -> Gump Link Cr .)
+    EmWord          reduce using rule 15 (gumpline -> Gump Link Cr .)
+    Color           reduce using rule 15 (gumpline -> Gump Link Cr .)
+    Href            reduce using rule 15 (gumpline -> Gump Link Cr .)
+    LinkWordName    reduce using rule 15 (gumpline -> Gump Link Cr .)
 
 
 state 55
 
-    (40) Li1speList -> Li1spe Text . Cr
-    (42) Li1speList -> Li1spe Text . Cr Li2Block
+    (32) Li0List -> Li0 wordlineinit Cr .
+    (34) Li0List -> Li0 wordlineinit Cr . Li1Block
+    (43) Li1Block -> . Li1List
+    (47) Li1Block -> . Li1speList
+    (40) Li1List -> . Li1 wordlineinit Cr
+    (41) Li1List -> . Li1List Li1List
+    (42) Li1List -> . Li1 wordlineinit Cr Li2Block
+    (44) Li1speList -> . Li1spe wordlineinit Cr
+    (45) Li1speList -> . Li1speList Li1speList
+    (46) Li1speList -> . Li1spe wordlineinit Cr Li2Block
 
-    Cr              shift and go to state 59
+    Li0             reduce using rule 32 (Li0List -> Li0 wordlineinit Cr .)
+    $end            reduce using rule 32 (Li0List -> Li0 wordlineinit Cr .)
+    Hr              reduce using rule 32 (Li0List -> Li0 wordlineinit Cr .)
+    Hn              reduce using rule 32 (Li0List -> Li0 wordlineinit Cr .)
+    Gump            reduce using rule 32 (Li0List -> Li0 wordlineinit Cr .)
+    Blockquote      reduce using rule 32 (Li0List -> Li0 wordlineinit Cr .)
+    CodeBlock       reduce using rule 32 (Li0List -> Li0 wordlineinit Cr .)
+    Li0spe          reduce using rule 32 (Li0List -> Li0 wordlineinit Cr .)
+    Text            reduce using rule 32 (Li0List -> Li0 wordlineinit Cr .)
+    Strong          reduce using rule 32 (Li0List -> Li0 wordlineinit Cr .)
+    CodeLine        reduce using rule 32 (Li0List -> Li0 wordlineinit Cr .)
+    EmWord          reduce using rule 32 (Li0List -> Li0 wordlineinit Cr .)
+    Color           reduce using rule 32 (Li0List -> Li0 wordlineinit Cr .)
+    Href            reduce using rule 32 (Li0List -> Li0 wordlineinit Cr .)
+    LinkWordName    reduce using rule 32 (Li0List -> Li0 wordlineinit Cr .)
+    Li1             shift and go to state 61
+    Li1spe          shift and go to state 58
 
+    Li1Block                       shift and go to state 62
+    Li1speList                     shift and go to state 60
+    Li1List                        shift and go to state 59
 
 state 56
 
-    (37) Li1List -> Li1List Li1List .
-    (37) Li1List -> Li1List . Li1List
-    (36) Li1List -> . Li1 Text Cr
-    (37) Li1List -> . Li1List Li1List
-    (38) Li1List -> . Li1 Text Cr Li2Block
+    (12) CodeBlockText -> CodeBlock Cr wordlineinit .
+    (19) wordlineinit -> wordlineinit . Text
+    (20) wordlineinit -> wordlineinit . specialtext
+    (23) specialtext -> . Strong
+    (24) specialtext -> . CodeLine
+    (25) specialtext -> . EmWord
+    (26) specialtext -> . linkword
+    (27) specialtext -> . Color
+    (31) linkword -> . LinkWordName Link
 
-  ! shift/reduce conflict for Li1 resolved as shift
-    Li0             reduce using rule 37 (Li1List -> Li1List Li1List .)
-    Li0spe          reduce using rule 37 (Li1List -> Li1List Li1List .)
-    $end            reduce using rule 37 (Li1List -> Li1List Li1List .)
-    Hn              reduce using rule 37 (Li1List -> Li1List Li1List .)
-    Gump            reduce using rule 37 (Li1List -> Li1List Li1List .)
-    Hr              reduce using rule 37 (Li1List -> Li1List Li1List .)
-    CodeBlock       reduce using rule 37 (Li1List -> Li1List Li1List .)
-    Text            reduce using rule 37 (Li1List -> Li1List Li1List .)
-    Strong          reduce using rule 37 (Li1List -> Li1List Li1List .)
-    CodeLine        reduce using rule 37 (Li1List -> Li1List Li1List .)
-    EmWord          reduce using rule 37 (Li1List -> Li1List Li1List .)
-    Href            reduce using rule 37 (Li1List -> Li1List Li1List .)
-    Blockquote      reduce using rule 37 (Li1List -> Li1List Li1List .)
-    LinkWordName    reduce using rule 37 (Li1List -> Li1List Li1List .)
-    Li1             shift and go to state 53
+    Cr              reduce using rule 12 (CodeBlockText -> CodeBlock Cr wordlineinit .)
+    Text            shift and go to state 45
+    Strong          shift and go to state 10
+    CodeLine        shift and go to state 16
+    EmWord          shift and go to state 25
+    Color           shift and go to state 22
+    LinkWordName    shift and go to state 30
 
-  ! Li1             [ reduce using rule 37 (Li1List -> Li1List Li1List .) ]
-
-    Li1List                        shift and go to state 56
+    linkword                       shift and go to state 28
+    specialtext                    shift and go to state 46
 
 state 57
 
-    (41) Li1speList -> Li1speList Li1speList .
-    (41) Li1speList -> Li1speList . Li1speList
-    (40) Li1speList -> . Li1spe Text Cr
-    (41) Li1speList -> . Li1speList Li1speList
-    (42) Li1speList -> . Li1spe Text Cr Li2Block
+    (38) Li0speList -> Li0spe wordlineinit Cr Li1Block .
 
-  ! shift/reduce conflict for Li1spe resolved as shift
-    Li0             reduce using rule 41 (Li1speList -> Li1speList Li1speList .)
-    Li0spe          reduce using rule 41 (Li1speList -> Li1speList Li1speList .)
-    $end            reduce using rule 41 (Li1speList -> Li1speList Li1speList .)
-    Hn              reduce using rule 41 (Li1speList -> Li1speList Li1speList .)
-    Gump            reduce using rule 41 (Li1speList -> Li1speList Li1speList .)
-    Hr              reduce using rule 41 (Li1speList -> Li1speList Li1speList .)
-    CodeBlock       reduce using rule 41 (Li1speList -> Li1speList Li1speList .)
-    Text            reduce using rule 41 (Li1speList -> Li1speList Li1speList .)
-    Strong          reduce using rule 41 (Li1speList -> Li1speList Li1speList .)
-    CodeLine        reduce using rule 41 (Li1speList -> Li1speList Li1speList .)
-    EmWord          reduce using rule 41 (Li1speList -> Li1speList Li1speList .)
-    Href            reduce using rule 41 (Li1speList -> Li1speList Li1speList .)
-    Blockquote      reduce using rule 41 (Li1speList -> Li1speList Li1speList .)
-    LinkWordName    reduce using rule 41 (Li1speList -> Li1speList Li1speList .)
-    Li1spe          shift and go to state 50
+    Li0spe          reduce using rule 38 (Li0speList -> Li0spe wordlineinit Cr Li1Block .)
+    $end            reduce using rule 38 (Li0speList -> Li0spe wordlineinit Cr Li1Block .)
+    Hr              reduce using rule 38 (Li0speList -> Li0spe wordlineinit Cr Li1Block .)
+    Hn              reduce using rule 38 (Li0speList -> Li0spe wordlineinit Cr Li1Block .)
+    Gump            reduce using rule 38 (Li0speList -> Li0spe wordlineinit Cr Li1Block .)
+    Blockquote      reduce using rule 38 (Li0speList -> Li0spe wordlineinit Cr Li1Block .)
+    CodeBlock       reduce using rule 38 (Li0speList -> Li0spe wordlineinit Cr Li1Block .)
+    Li0             reduce using rule 38 (Li0speList -> Li0spe wordlineinit Cr Li1Block .)
+    Text            reduce using rule 38 (Li0speList -> Li0spe wordlineinit Cr Li1Block .)
+    Strong          reduce using rule 38 (Li0speList -> Li0spe wordlineinit Cr Li1Block .)
+    CodeLine        reduce using rule 38 (Li0speList -> Li0spe wordlineinit Cr Li1Block .)
+    EmWord          reduce using rule 38 (Li0speList -> Li0spe wordlineinit Cr Li1Block .)
+    Color           reduce using rule 38 (Li0speList -> Li0spe wordlineinit Cr Li1Block .)
+    Href            reduce using rule 38 (Li0speList -> Li0spe wordlineinit Cr Li1Block .)
+    LinkWordName    reduce using rule 38 (Li0speList -> Li0spe wordlineinit Cr Li1Block .)
 
-  ! Li1spe          [ reduce using rule 41 (Li1speList -> Li1speList Li1speList .) ]
-
-    Li1speList                     shift and go to state 57
 
 state 58
 
-    (36) Li1List -> Li1 Text . Cr
-    (38) Li1List -> Li1 Text . Cr Li2Block
+    (44) Li1speList -> Li1spe . wordlineinit Cr
+    (46) Li1speList -> Li1spe . wordlineinit Cr Li2Block
+    (17) wordlineinit -> . Text
+    (18) wordlineinit -> . specialtext
+    (19) wordlineinit -> . wordlineinit Text
+    (20) wordlineinit -> . wordlineinit specialtext
+    (21) wordlineinit -> . Href
+    (23) specialtext -> . Strong
+    (24) specialtext -> . CodeLine
+    (25) specialtext -> . EmWord
+    (26) specialtext -> . linkword
+    (27) specialtext -> . Color
+    (31) linkword -> . LinkWordName Link
 
-    Cr              shift and go to state 60
+    Text            shift and go to state 23
+    Href            shift and go to state 8
+    Strong          shift and go to state 10
+    CodeLine        shift and go to state 16
+    EmWord          shift and go to state 25
+    Color           shift and go to state 22
+    LinkWordName    shift and go to state 30
 
+    linkword                       shift and go to state 28
+    wordlineinit                   shift and go to state 63
+    specialtext                    shift and go to state 7
 
 state 59
 
-    (40) Li1speList -> Li1spe Text Cr .
-    (42) Li1speList -> Li1spe Text Cr . Li2Block
-    (48) Li2Block -> . Li2speList
-    (49) Li2Block -> . Li2List
-    (46) Li2speList -> . Li2spe Text Cr
-    (47) Li2speList -> . Li2speList Li2speList
-    (44) Li2List -> . Li2 Text Cr
-    (45) Li2List -> . Li2List Li2List
+    (43) Li1Block -> Li1List .
+    (41) Li1List -> Li1List . Li1List
+    (40) Li1List -> . Li1 wordlineinit Cr
+    (41) Li1List -> . Li1List Li1List
+    (42) Li1List -> . Li1 wordlineinit Cr Li2Block
 
-    Li1spe          reduce using rule 40 (Li1speList -> Li1spe Text Cr .)
-    Li0             reduce using rule 40 (Li1speList -> Li1spe Text Cr .)
-    Li0spe          reduce using rule 40 (Li1speList -> Li1spe Text Cr .)
-    $end            reduce using rule 40 (Li1speList -> Li1spe Text Cr .)
-    Hn              reduce using rule 40 (Li1speList -> Li1spe Text Cr .)
-    Gump            reduce using rule 40 (Li1speList -> Li1spe Text Cr .)
-    Hr              reduce using rule 40 (Li1speList -> Li1spe Text Cr .)
-    CodeBlock       reduce using rule 40 (Li1speList -> Li1spe Text Cr .)
-    Text            reduce using rule 40 (Li1speList -> Li1spe Text Cr .)
-    Strong          reduce using rule 40 (Li1speList -> Li1spe Text Cr .)
-    CodeLine        reduce using rule 40 (Li1speList -> Li1spe Text Cr .)
-    EmWord          reduce using rule 40 (Li1speList -> Li1spe Text Cr .)
-    Href            reduce using rule 40 (Li1speList -> Li1spe Text Cr .)
-    Blockquote      reduce using rule 40 (Li1speList -> Li1spe Text Cr .)
-    LinkWordName    reduce using rule 40 (Li1speList -> Li1spe Text Cr .)
-    Li2spe          shift and go to state 65
-    Li2             shift and go to state 63
+    Li0             reduce using rule 43 (Li1Block -> Li1List .)
+    Li0spe          reduce using rule 43 (Li1Block -> Li1List .)
+    $end            reduce using rule 43 (Li1Block -> Li1List .)
+    Hr              reduce using rule 43 (Li1Block -> Li1List .)
+    Hn              reduce using rule 43 (Li1Block -> Li1List .)
+    Gump            reduce using rule 43 (Li1Block -> Li1List .)
+    Blockquote      reduce using rule 43 (Li1Block -> Li1List .)
+    CodeBlock       reduce using rule 43 (Li1Block -> Li1List .)
+    Text            reduce using rule 43 (Li1Block -> Li1List .)
+    Strong          reduce using rule 43 (Li1Block -> Li1List .)
+    CodeLine        reduce using rule 43 (Li1Block -> Li1List .)
+    EmWord          reduce using rule 43 (Li1Block -> Li1List .)
+    Color           reduce using rule 43 (Li1Block -> Li1List .)
+    Href            reduce using rule 43 (Li1Block -> Li1List .)
+    LinkWordName    reduce using rule 43 (Li1Block -> Li1List .)
+    Li1             shift and go to state 61
 
-    Li2Block                       shift and go to state 61
-    Li2List                        shift and go to state 64
-    Li2speList                     shift and go to state 62
+    Li1List                        shift and go to state 64
 
 state 60
 
-    (36) Li1List -> Li1 Text Cr .
-    (38) Li1List -> Li1 Text Cr . Li2Block
-    (48) Li2Block -> . Li2speList
-    (49) Li2Block -> . Li2List
-    (46) Li2speList -> . Li2spe Text Cr
-    (47) Li2speList -> . Li2speList Li2speList
-    (44) Li2List -> . Li2 Text Cr
-    (45) Li2List -> . Li2List Li2List
+    (47) Li1Block -> Li1speList .
+    (45) Li1speList -> Li1speList . Li1speList
+    (44) Li1speList -> . Li1spe wordlineinit Cr
+    (45) Li1speList -> . Li1speList Li1speList
+    (46) Li1speList -> . Li1spe wordlineinit Cr Li2Block
 
-    Li1             reduce using rule 36 (Li1List -> Li1 Text Cr .)
-    Li0             reduce using rule 36 (Li1List -> Li1 Text Cr .)
-    Li0spe          reduce using rule 36 (Li1List -> Li1 Text Cr .)
-    $end            reduce using rule 36 (Li1List -> Li1 Text Cr .)
-    Hn              reduce using rule 36 (Li1List -> Li1 Text Cr .)
-    Gump            reduce using rule 36 (Li1List -> Li1 Text Cr .)
-    Hr              reduce using rule 36 (Li1List -> Li1 Text Cr .)
-    CodeBlock       reduce using rule 36 (Li1List -> Li1 Text Cr .)
-    Text            reduce using rule 36 (Li1List -> Li1 Text Cr .)
-    Strong          reduce using rule 36 (Li1List -> Li1 Text Cr .)
-    CodeLine        reduce using rule 36 (Li1List -> Li1 Text Cr .)
-    EmWord          reduce using rule 36 (Li1List -> Li1 Text Cr .)
-    Href            reduce using rule 36 (Li1List -> Li1 Text Cr .)
-    Blockquote      reduce using rule 36 (Li1List -> Li1 Text Cr .)
-    LinkWordName    reduce using rule 36 (Li1List -> Li1 Text Cr .)
-    Li2spe          shift and go to state 65
-    Li2             shift and go to state 63
+    Li0             reduce using rule 47 (Li1Block -> Li1speList .)
+    Li0spe          reduce using rule 47 (Li1Block -> Li1speList .)
+    $end            reduce using rule 47 (Li1Block -> Li1speList .)
+    Hr              reduce using rule 47 (Li1Block -> Li1speList .)
+    Hn              reduce using rule 47 (Li1Block -> Li1speList .)
+    Gump            reduce using rule 47 (Li1Block -> Li1speList .)
+    Blockquote      reduce using rule 47 (Li1Block -> Li1speList .)
+    CodeBlock       reduce using rule 47 (Li1Block -> Li1speList .)
+    Text            reduce using rule 47 (Li1Block -> Li1speList .)
+    Strong          reduce using rule 47 (Li1Block -> Li1speList .)
+    CodeLine        reduce using rule 47 (Li1Block -> Li1speList .)
+    EmWord          reduce using rule 47 (Li1Block -> Li1speList .)
+    Color           reduce using rule 47 (Li1Block -> Li1speList .)
+    Href            reduce using rule 47 (Li1Block -> Li1speList .)
+    LinkWordName    reduce using rule 47 (Li1Block -> Li1speList .)
+    Li1spe          shift and go to state 58
 
-    Li2Block                       shift and go to state 66
-    Li2List                        shift and go to state 64
-    Li2speList                     shift and go to state 62
+    Li1speList                     shift and go to state 65
 
 state 61
 
-    (42) Li1speList -> Li1spe Text Cr Li2Block .
+    (40) Li1List -> Li1 . wordlineinit Cr
+    (42) Li1List -> Li1 . wordlineinit Cr Li2Block
+    (17) wordlineinit -> . Text
+    (18) wordlineinit -> . specialtext
+    (19) wordlineinit -> . wordlineinit Text
+    (20) wordlineinit -> . wordlineinit specialtext
+    (21) wordlineinit -> . Href
+    (23) specialtext -> . Strong
+    (24) specialtext -> . CodeLine
+    (25) specialtext -> . EmWord
+    (26) specialtext -> . linkword
+    (27) specialtext -> . Color
+    (31) linkword -> . LinkWordName Link
 
-    Li1spe          reduce using rule 42 (Li1speList -> Li1spe Text Cr Li2Block .)
-    Li0             reduce using rule 42 (Li1speList -> Li1spe Text Cr Li2Block .)
-    Li0spe          reduce using rule 42 (Li1speList -> Li1spe Text Cr Li2Block .)
-    $end            reduce using rule 42 (Li1speList -> Li1spe Text Cr Li2Block .)
-    Hn              reduce using rule 42 (Li1speList -> Li1spe Text Cr Li2Block .)
-    Gump            reduce using rule 42 (Li1speList -> Li1spe Text Cr Li2Block .)
-    Hr              reduce using rule 42 (Li1speList -> Li1spe Text Cr Li2Block .)
-    CodeBlock       reduce using rule 42 (Li1speList -> Li1spe Text Cr Li2Block .)
-    Text            reduce using rule 42 (Li1speList -> Li1spe Text Cr Li2Block .)
-    Strong          reduce using rule 42 (Li1speList -> Li1spe Text Cr Li2Block .)
-    CodeLine        reduce using rule 42 (Li1speList -> Li1spe Text Cr Li2Block .)
-    EmWord          reduce using rule 42 (Li1speList -> Li1spe Text Cr Li2Block .)
-    Href            reduce using rule 42 (Li1speList -> Li1spe Text Cr Li2Block .)
-    Blockquote      reduce using rule 42 (Li1speList -> Li1spe Text Cr Li2Block .)
-    LinkWordName    reduce using rule 42 (Li1speList -> Li1spe Text Cr Li2Block .)
+    Text            shift and go to state 23
+    Href            shift and go to state 8
+    Strong          shift and go to state 10
+    CodeLine        shift and go to state 16
+    EmWord          shift and go to state 25
+    Color           shift and go to state 22
+    LinkWordName    shift and go to state 30
 
+    linkword                       shift and go to state 28
+    wordlineinit                   shift and go to state 66
+    specialtext                    shift and go to state 7
 
 state 62
 
-    (48) Li2Block -> Li2speList .
-    (47) Li2speList -> Li2speList . Li2speList
-    (46) Li2speList -> . Li2spe Text Cr
-    (47) Li2speList -> . Li2speList Li2speList
+    (34) Li0List -> Li0 wordlineinit Cr Li1Block .
 
-    Li1             reduce using rule 48 (Li2Block -> Li2speList .)
-    Li1spe          reduce using rule 48 (Li2Block -> Li2speList .)
-    Li0             reduce using rule 48 (Li2Block -> Li2speList .)
-    Li0spe          reduce using rule 48 (Li2Block -> Li2speList .)
-    $end            reduce using rule 48 (Li2Block -> Li2speList .)
-    Hn              reduce using rule 48 (Li2Block -> Li2speList .)
-    Gump            reduce using rule 48 (Li2Block -> Li2speList .)
-    Hr              reduce using rule 48 (Li2Block -> Li2speList .)
-    CodeBlock       reduce using rule 48 (Li2Block -> Li2speList .)
-    Text            reduce using rule 48 (Li2Block -> Li2speList .)
-    Strong          reduce using rule 48 (Li2Block -> Li2speList .)
-    CodeLine        reduce using rule 48 (Li2Block -> Li2speList .)
-    EmWord          reduce using rule 48 (Li2Block -> Li2speList .)
-    Href            reduce using rule 48 (Li2Block -> Li2speList .)
-    Blockquote      reduce using rule 48 (Li2Block -> Li2speList .)
-    LinkWordName    reduce using rule 48 (Li2Block -> Li2speList .)
-    Li2spe          shift and go to state 65
+    Li0             reduce using rule 34 (Li0List -> Li0 wordlineinit Cr Li1Block .)
+    $end            reduce using rule 34 (Li0List -> Li0 wordlineinit Cr Li1Block .)
+    Hr              reduce using rule 34 (Li0List -> Li0 wordlineinit Cr Li1Block .)
+    Hn              reduce using rule 34 (Li0List -> Li0 wordlineinit Cr Li1Block .)
+    Gump            reduce using rule 34 (Li0List -> Li0 wordlineinit Cr Li1Block .)
+    Blockquote      reduce using rule 34 (Li0List -> Li0 wordlineinit Cr Li1Block .)
+    CodeBlock       reduce using rule 34 (Li0List -> Li0 wordlineinit Cr Li1Block .)
+    Li0spe          reduce using rule 34 (Li0List -> Li0 wordlineinit Cr Li1Block .)
+    Text            reduce using rule 34 (Li0List -> Li0 wordlineinit Cr Li1Block .)
+    Strong          reduce using rule 34 (Li0List -> Li0 wordlineinit Cr Li1Block .)
+    CodeLine        reduce using rule 34 (Li0List -> Li0 wordlineinit Cr Li1Block .)
+    EmWord          reduce using rule 34 (Li0List -> Li0 wordlineinit Cr Li1Block .)
+    Color           reduce using rule 34 (Li0List -> Li0 wordlineinit Cr Li1Block .)
+    Href            reduce using rule 34 (Li0List -> Li0 wordlineinit Cr Li1Block .)
+    LinkWordName    reduce using rule 34 (Li0List -> Li0 wordlineinit Cr Li1Block .)
 
-    Li2speList                     shift and go to state 67
 
 state 63
 
-    (44) Li2List -> Li2 . Text Cr
+    (44) Li1speList -> Li1spe wordlineinit . Cr
+    (46) Li1speList -> Li1spe wordlineinit . Cr Li2Block
+    (19) wordlineinit -> wordlineinit . Text
+    (20) wordlineinit -> wordlineinit . specialtext
+    (23) specialtext -> . Strong
+    (24) specialtext -> . CodeLine
+    (25) specialtext -> . EmWord
+    (26) specialtext -> . linkword
+    (27) specialtext -> . Color
+    (31) linkword -> . LinkWordName Link
 
-    Text            shift and go to state 68
+    Cr              shift and go to state 67
+    Text            shift and go to state 45
+    Strong          shift and go to state 10
+    CodeLine        shift and go to state 16
+    EmWord          shift and go to state 25
+    Color           shift and go to state 22
+    LinkWordName    shift and go to state 30
 
+    linkword                       shift and go to state 28
+    specialtext                    shift and go to state 46
 
 state 64
 
-    (49) Li2Block -> Li2List .
-    (45) Li2List -> Li2List . Li2List
-    (44) Li2List -> . Li2 Text Cr
-    (45) Li2List -> . Li2List Li2List
+    (41) Li1List -> Li1List Li1List .
+    (41) Li1List -> Li1List . Li1List
+    (40) Li1List -> . Li1 wordlineinit Cr
+    (41) Li1List -> . Li1List Li1List
+    (42) Li1List -> . Li1 wordlineinit Cr Li2Block
 
-    Li1             reduce using rule 49 (Li2Block -> Li2List .)
-    Li1spe          reduce using rule 49 (Li2Block -> Li2List .)
-    Li0             reduce using rule 49 (Li2Block -> Li2List .)
-    Li0spe          reduce using rule 49 (Li2Block -> Li2List .)
-    $end            reduce using rule 49 (Li2Block -> Li2List .)
-    Hn              reduce using rule 49 (Li2Block -> Li2List .)
-    Gump            reduce using rule 49 (Li2Block -> Li2List .)
-    Hr              reduce using rule 49 (Li2Block -> Li2List .)
-    CodeBlock       reduce using rule 49 (Li2Block -> Li2List .)
-    Text            reduce using rule 49 (Li2Block -> Li2List .)
-    Strong          reduce using rule 49 (Li2Block -> Li2List .)
-    CodeLine        reduce using rule 49 (Li2Block -> Li2List .)
-    EmWord          reduce using rule 49 (Li2Block -> Li2List .)
-    Href            reduce using rule 49 (Li2Block -> Li2List .)
-    Blockquote      reduce using rule 49 (Li2Block -> Li2List .)
-    LinkWordName    reduce using rule 49 (Li2Block -> Li2List .)
-    Li2             shift and go to state 63
+  ! shift/reduce conflict for Li1 resolved as shift
+    Li0             reduce using rule 41 (Li1List -> Li1List Li1List .)
+    Li0spe          reduce using rule 41 (Li1List -> Li1List Li1List .)
+    $end            reduce using rule 41 (Li1List -> Li1List Li1List .)
+    Hr              reduce using rule 41 (Li1List -> Li1List Li1List .)
+    Hn              reduce using rule 41 (Li1List -> Li1List Li1List .)
+    Gump            reduce using rule 41 (Li1List -> Li1List Li1List .)
+    Blockquote      reduce using rule 41 (Li1List -> Li1List Li1List .)
+    CodeBlock       reduce using rule 41 (Li1List -> Li1List Li1List .)
+    Text            reduce using rule 41 (Li1List -> Li1List Li1List .)
+    Strong          reduce using rule 41 (Li1List -> Li1List Li1List .)
+    CodeLine        reduce using rule 41 (Li1List -> Li1List Li1List .)
+    EmWord          reduce using rule 41 (Li1List -> Li1List Li1List .)
+    Color           reduce using rule 41 (Li1List -> Li1List Li1List .)
+    Href            reduce using rule 41 (Li1List -> Li1List Li1List .)
+    LinkWordName    reduce using rule 41 (Li1List -> Li1List Li1List .)
+    Li1             shift and go to state 61
 
-    Li2List                        shift and go to state 69
+  ! Li1             [ reduce using rule 41 (Li1List -> Li1List Li1List .) ]
+
+    Li1List                        shift and go to state 64
 
 state 65
 
-    (46) Li2speList -> Li2spe . Text Cr
+    (45) Li1speList -> Li1speList Li1speList .
+    (45) Li1speList -> Li1speList . Li1speList
+    (44) Li1speList -> . Li1spe wordlineinit Cr
+    (45) Li1speList -> . Li1speList Li1speList
+    (46) Li1speList -> . Li1spe wordlineinit Cr Li2Block
 
-    Text            shift and go to state 70
+  ! shift/reduce conflict for Li1spe resolved as shift
+    Li0             reduce using rule 45 (Li1speList -> Li1speList Li1speList .)
+    Li0spe          reduce using rule 45 (Li1speList -> Li1speList Li1speList .)
+    $end            reduce using rule 45 (Li1speList -> Li1speList Li1speList .)
+    Hr              reduce using rule 45 (Li1speList -> Li1speList Li1speList .)
+    Hn              reduce using rule 45 (Li1speList -> Li1speList Li1speList .)
+    Gump            reduce using rule 45 (Li1speList -> Li1speList Li1speList .)
+    Blockquote      reduce using rule 45 (Li1speList -> Li1speList Li1speList .)
+    CodeBlock       reduce using rule 45 (Li1speList -> Li1speList Li1speList .)
+    Text            reduce using rule 45 (Li1speList -> Li1speList Li1speList .)
+    Strong          reduce using rule 45 (Li1speList -> Li1speList Li1speList .)
+    CodeLine        reduce using rule 45 (Li1speList -> Li1speList Li1speList .)
+    EmWord          reduce using rule 45 (Li1speList -> Li1speList Li1speList .)
+    Color           reduce using rule 45 (Li1speList -> Li1speList Li1speList .)
+    Href            reduce using rule 45 (Li1speList -> Li1speList Li1speList .)
+    LinkWordName    reduce using rule 45 (Li1speList -> Li1speList Li1speList .)
+    Li1spe          shift and go to state 58
 
+  ! Li1spe          [ reduce using rule 45 (Li1speList -> Li1speList Li1speList .) ]
+
+    Li1speList                     shift and go to state 65
 
 state 66
 
-    (38) Li1List -> Li1 Text Cr Li2Block .
+    (40) Li1List -> Li1 wordlineinit . Cr
+    (42) Li1List -> Li1 wordlineinit . Cr Li2Block
+    (19) wordlineinit -> wordlineinit . Text
+    (20) wordlineinit -> wordlineinit . specialtext
+    (23) specialtext -> . Strong
+    (24) specialtext -> . CodeLine
+    (25) specialtext -> . EmWord
+    (26) specialtext -> . linkword
+    (27) specialtext -> . Color
+    (31) linkword -> . LinkWordName Link
 
-    Li1             reduce using rule 38 (Li1List -> Li1 Text Cr Li2Block .)
-    Li0             reduce using rule 38 (Li1List -> Li1 Text Cr Li2Block .)
-    Li0spe          reduce using rule 38 (Li1List -> Li1 Text Cr Li2Block .)
-    $end            reduce using rule 38 (Li1List -> Li1 Text Cr Li2Block .)
-    Hn              reduce using rule 38 (Li1List -> Li1 Text Cr Li2Block .)
-    Gump            reduce using rule 38 (Li1List -> Li1 Text Cr Li2Block .)
-    Hr              reduce using rule 38 (Li1List -> Li1 Text Cr Li2Block .)
-    CodeBlock       reduce using rule 38 (Li1List -> Li1 Text Cr Li2Block .)
-    Text            reduce using rule 38 (Li1List -> Li1 Text Cr Li2Block .)
-    Strong          reduce using rule 38 (Li1List -> Li1 Text Cr Li2Block .)
-    CodeLine        reduce using rule 38 (Li1List -> Li1 Text Cr Li2Block .)
-    EmWord          reduce using rule 38 (Li1List -> Li1 Text Cr Li2Block .)
-    Href            reduce using rule 38 (Li1List -> Li1 Text Cr Li2Block .)
-    Blockquote      reduce using rule 38 (Li1List -> Li1 Text Cr Li2Block .)
-    LinkWordName    reduce using rule 38 (Li1List -> Li1 Text Cr Li2Block .)
+    Cr              shift and go to state 68
+    Text            shift and go to state 45
+    Strong          shift and go to state 10
+    CodeLine        shift and go to state 16
+    EmWord          shift and go to state 25
+    Color           shift and go to state 22
+    LinkWordName    shift and go to state 30
 
+    linkword                       shift and go to state 28
+    specialtext                    shift and go to state 46
 
 state 67
 
-    (47) Li2speList -> Li2speList Li2speList .
-    (47) Li2speList -> Li2speList . Li2speList
-    (46) Li2speList -> . Li2spe Text Cr
-    (47) Li2speList -> . Li2speList Li2speList
+    (44) Li1speList -> Li1spe wordlineinit Cr .
+    (46) Li1speList -> Li1spe wordlineinit Cr . Li2Block
+    (52) Li2Block -> . Li2speList
+    (53) Li2Block -> . Li2List
+    (50) Li2speList -> . Li2spe wordlineinit Cr
+    (51) Li2speList -> . Li2speList Li2speList
+    (48) Li2List -> . Li2 wordlineinit Cr
+    (49) Li2List -> . Li2List Li2List
 
-  ! shift/reduce conflict for Li2spe resolved as shift
-    Li1             reduce using rule 47 (Li2speList -> Li2speList Li2speList .)
-    Li1spe          reduce using rule 47 (Li2speList -> Li2speList Li2speList .)
-    Li0             reduce using rule 47 (Li2speList -> Li2speList Li2speList .)
-    Li0spe          reduce using rule 47 (Li2speList -> Li2speList Li2speList .)
-    $end            reduce using rule 47 (Li2speList -> Li2speList Li2speList .)
-    Hn              reduce using rule 47 (Li2speList -> Li2speList Li2speList .)
-    Gump            reduce using rule 47 (Li2speList -> Li2speList Li2speList .)
-    Hr              reduce using rule 47 (Li2speList -> Li2speList Li2speList .)
-    CodeBlock       reduce using rule 47 (Li2speList -> Li2speList Li2speList .)
-    Text            reduce using rule 47 (Li2speList -> Li2speList Li2speList .)
-    Strong          reduce using rule 47 (Li2speList -> Li2speList Li2speList .)
-    CodeLine        reduce using rule 47 (Li2speList -> Li2speList Li2speList .)
-    EmWord          reduce using rule 47 (Li2speList -> Li2speList Li2speList .)
-    Href            reduce using rule 47 (Li2speList -> Li2speList Li2speList .)
-    Blockquote      reduce using rule 47 (Li2speList -> Li2speList Li2speList .)
-    LinkWordName    reduce using rule 47 (Li2speList -> Li2speList Li2speList .)
-    Li2spe          shift and go to state 65
+    Li1spe          reduce using rule 44 (Li1speList -> Li1spe wordlineinit Cr .)
+    Li0             reduce using rule 44 (Li1speList -> Li1spe wordlineinit Cr .)
+    Li0spe          reduce using rule 44 (Li1speList -> Li1spe wordlineinit Cr .)
+    $end            reduce using rule 44 (Li1speList -> Li1spe wordlineinit Cr .)
+    Hr              reduce using rule 44 (Li1speList -> Li1spe wordlineinit Cr .)
+    Hn              reduce using rule 44 (Li1speList -> Li1spe wordlineinit Cr .)
+    Gump            reduce using rule 44 (Li1speList -> Li1spe wordlineinit Cr .)
+    Blockquote      reduce using rule 44 (Li1speList -> Li1spe wordlineinit Cr .)
+    CodeBlock       reduce using rule 44 (Li1speList -> Li1spe wordlineinit Cr .)
+    Text            reduce using rule 44 (Li1speList -> Li1spe wordlineinit Cr .)
+    Strong          reduce using rule 44 (Li1speList -> Li1spe wordlineinit Cr .)
+    CodeLine        reduce using rule 44 (Li1speList -> Li1spe wordlineinit Cr .)
+    EmWord          reduce using rule 44 (Li1speList -> Li1spe wordlineinit Cr .)
+    Color           reduce using rule 44 (Li1speList -> Li1spe wordlineinit Cr .)
+    Href            reduce using rule 44 (Li1speList -> Li1spe wordlineinit Cr .)
+    LinkWordName    reduce using rule 44 (Li1speList -> Li1spe wordlineinit Cr .)
+    Li2spe          shift and go to state 73
+    Li2             shift and go to state 71
 
-  ! Li2spe          [ reduce using rule 47 (Li2speList -> Li2speList Li2speList .) ]
-
-    Li2speList                     shift and go to state 67
+    Li2Block                       shift and go to state 69
+    Li2List                        shift and go to state 72
+    Li2speList                     shift and go to state 70
 
 state 68
 
-    (44) Li2List -> Li2 Text . Cr
+    (40) Li1List -> Li1 wordlineinit Cr .
+    (42) Li1List -> Li1 wordlineinit Cr . Li2Block
+    (52) Li2Block -> . Li2speList
+    (53) Li2Block -> . Li2List
+    (50) Li2speList -> . Li2spe wordlineinit Cr
+    (51) Li2speList -> . Li2speList Li2speList
+    (48) Li2List -> . Li2 wordlineinit Cr
+    (49) Li2List -> . Li2List Li2List
 
-    Cr              shift and go to state 71
+    Li1             reduce using rule 40 (Li1List -> Li1 wordlineinit Cr .)
+    Li0             reduce using rule 40 (Li1List -> Li1 wordlineinit Cr .)
+    Li0spe          reduce using rule 40 (Li1List -> Li1 wordlineinit Cr .)
+    $end            reduce using rule 40 (Li1List -> Li1 wordlineinit Cr .)
+    Hr              reduce using rule 40 (Li1List -> Li1 wordlineinit Cr .)
+    Hn              reduce using rule 40 (Li1List -> Li1 wordlineinit Cr .)
+    Gump            reduce using rule 40 (Li1List -> Li1 wordlineinit Cr .)
+    Blockquote      reduce using rule 40 (Li1List -> Li1 wordlineinit Cr .)
+    CodeBlock       reduce using rule 40 (Li1List -> Li1 wordlineinit Cr .)
+    Text            reduce using rule 40 (Li1List -> Li1 wordlineinit Cr .)
+    Strong          reduce using rule 40 (Li1List -> Li1 wordlineinit Cr .)
+    CodeLine        reduce using rule 40 (Li1List -> Li1 wordlineinit Cr .)
+    EmWord          reduce using rule 40 (Li1List -> Li1 wordlineinit Cr .)
+    Color           reduce using rule 40 (Li1List -> Li1 wordlineinit Cr .)
+    Href            reduce using rule 40 (Li1List -> Li1 wordlineinit Cr .)
+    LinkWordName    reduce using rule 40 (Li1List -> Li1 wordlineinit Cr .)
+    Li2spe          shift and go to state 73
+    Li2             shift and go to state 71
 
+    Li2Block                       shift and go to state 74
+    Li2List                        shift and go to state 72
+    Li2speList                     shift and go to state 70
 
 state 69
 
-    (45) Li2List -> Li2List Li2List .
-    (45) Li2List -> Li2List . Li2List
-    (44) Li2List -> . Li2 Text Cr
-    (45) Li2List -> . Li2List Li2List
+    (46) Li1speList -> Li1spe wordlineinit Cr Li2Block .
 
-  ! shift/reduce conflict for Li2 resolved as shift
-    Li1             reduce using rule 45 (Li2List -> Li2List Li2List .)
-    Li1spe          reduce using rule 45 (Li2List -> Li2List Li2List .)
-    Li0             reduce using rule 45 (Li2List -> Li2List Li2List .)
-    Li0spe          reduce using rule 45 (Li2List -> Li2List Li2List .)
-    $end            reduce using rule 45 (Li2List -> Li2List Li2List .)
-    Hn              reduce using rule 45 (Li2List -> Li2List Li2List .)
-    Gump            reduce using rule 45 (Li2List -> Li2List Li2List .)
-    Hr              reduce using rule 45 (Li2List -> Li2List Li2List .)
-    CodeBlock       reduce using rule 45 (Li2List -> Li2List Li2List .)
-    Text            reduce using rule 45 (Li2List -> Li2List Li2List .)
-    Strong          reduce using rule 45 (Li2List -> Li2List Li2List .)
-    CodeLine        reduce using rule 45 (Li2List -> Li2List Li2List .)
-    EmWord          reduce using rule 45 (Li2List -> Li2List Li2List .)
-    Href            reduce using rule 45 (Li2List -> Li2List Li2List .)
-    Blockquote      reduce using rule 45 (Li2List -> Li2List Li2List .)
-    LinkWordName    reduce using rule 45 (Li2List -> Li2List Li2List .)
-    Li2             shift and go to state 63
+    Li1spe          reduce using rule 46 (Li1speList -> Li1spe wordlineinit Cr Li2Block .)
+    Li0             reduce using rule 46 (Li1speList -> Li1spe wordlineinit Cr Li2Block .)
+    Li0spe          reduce using rule 46 (Li1speList -> Li1spe wordlineinit Cr Li2Block .)
+    $end            reduce using rule 46 (Li1speList -> Li1spe wordlineinit Cr Li2Block .)
+    Hr              reduce using rule 46 (Li1speList -> Li1spe wordlineinit Cr Li2Block .)
+    Hn              reduce using rule 46 (Li1speList -> Li1spe wordlineinit Cr Li2Block .)
+    Gump            reduce using rule 46 (Li1speList -> Li1spe wordlineinit Cr Li2Block .)
+    Blockquote      reduce using rule 46 (Li1speList -> Li1spe wordlineinit Cr Li2Block .)
+    CodeBlock       reduce using rule 46 (Li1speList -> Li1spe wordlineinit Cr Li2Block .)
+    Text            reduce using rule 46 (Li1speList -> Li1spe wordlineinit Cr Li2Block .)
+    Strong          reduce using rule 46 (Li1speList -> Li1spe wordlineinit Cr Li2Block .)
+    CodeLine        reduce using rule 46 (Li1speList -> Li1spe wordlineinit Cr Li2Block .)
+    EmWord          reduce using rule 46 (Li1speList -> Li1spe wordlineinit Cr Li2Block .)
+    Color           reduce using rule 46 (Li1speList -> Li1spe wordlineinit Cr Li2Block .)
+    Href            reduce using rule 46 (Li1speList -> Li1spe wordlineinit Cr Li2Block .)
+    LinkWordName    reduce using rule 46 (Li1speList -> Li1spe wordlineinit Cr Li2Block .)
 
-  ! Li2             [ reduce using rule 45 (Li2List -> Li2List Li2List .) ]
-
-    Li2List                        shift and go to state 69
 
 state 70
 
-    (46) Li2speList -> Li2spe Text . Cr
+    (52) Li2Block -> Li2speList .
+    (51) Li2speList -> Li2speList . Li2speList
+    (50) Li2speList -> . Li2spe wordlineinit Cr
+    (51) Li2speList -> . Li2speList Li2speList
 
-    Cr              shift and go to state 72
+    Li1             reduce using rule 52 (Li2Block -> Li2speList .)
+    Li1spe          reduce using rule 52 (Li2Block -> Li2speList .)
+    Li0             reduce using rule 52 (Li2Block -> Li2speList .)
+    Li0spe          reduce using rule 52 (Li2Block -> Li2speList .)
+    $end            reduce using rule 52 (Li2Block -> Li2speList .)
+    Hr              reduce using rule 52 (Li2Block -> Li2speList .)
+    Hn              reduce using rule 52 (Li2Block -> Li2speList .)
+    Gump            reduce using rule 52 (Li2Block -> Li2speList .)
+    Blockquote      reduce using rule 52 (Li2Block -> Li2speList .)
+    CodeBlock       reduce using rule 52 (Li2Block -> Li2speList .)
+    Text            reduce using rule 52 (Li2Block -> Li2speList .)
+    Strong          reduce using rule 52 (Li2Block -> Li2speList .)
+    CodeLine        reduce using rule 52 (Li2Block -> Li2speList .)
+    EmWord          reduce using rule 52 (Li2Block -> Li2speList .)
+    Color           reduce using rule 52 (Li2Block -> Li2speList .)
+    Href            reduce using rule 52 (Li2Block -> Li2speList .)
+    LinkWordName    reduce using rule 52 (Li2Block -> Li2speList .)
+    Li2spe          shift and go to state 73
 
+    Li2speList                     shift and go to state 75
 
 state 71
 
-    (44) Li2List -> Li2 Text Cr .
+    (48) Li2List -> Li2 . wordlineinit Cr
+    (17) wordlineinit -> . Text
+    (18) wordlineinit -> . specialtext
+    (19) wordlineinit -> . wordlineinit Text
+    (20) wordlineinit -> . wordlineinit specialtext
+    (21) wordlineinit -> . Href
+    (23) specialtext -> . Strong
+    (24) specialtext -> . CodeLine
+    (25) specialtext -> . EmWord
+    (26) specialtext -> . linkword
+    (27) specialtext -> . Color
+    (31) linkword -> . LinkWordName Link
 
-    Li2             reduce using rule 44 (Li2List -> Li2 Text Cr .)
-    Li1             reduce using rule 44 (Li2List -> Li2 Text Cr .)
-    Li1spe          reduce using rule 44 (Li2List -> Li2 Text Cr .)
-    Li0             reduce using rule 44 (Li2List -> Li2 Text Cr .)
-    Li0spe          reduce using rule 44 (Li2List -> Li2 Text Cr .)
-    $end            reduce using rule 44 (Li2List -> Li2 Text Cr .)
-    Hn              reduce using rule 44 (Li2List -> Li2 Text Cr .)
-    Gump            reduce using rule 44 (Li2List -> Li2 Text Cr .)
-    Hr              reduce using rule 44 (Li2List -> Li2 Text Cr .)
-    CodeBlock       reduce using rule 44 (Li2List -> Li2 Text Cr .)
-    Text            reduce using rule 44 (Li2List -> Li2 Text Cr .)
-    Strong          reduce using rule 44 (Li2List -> Li2 Text Cr .)
-    CodeLine        reduce using rule 44 (Li2List -> Li2 Text Cr .)
-    EmWord          reduce using rule 44 (Li2List -> Li2 Text Cr .)
-    Href            reduce using rule 44 (Li2List -> Li2 Text Cr .)
-    Blockquote      reduce using rule 44 (Li2List -> Li2 Text Cr .)
-    LinkWordName    reduce using rule 44 (Li2List -> Li2 Text Cr .)
+    Text            shift and go to state 23
+    Href            shift and go to state 8
+    Strong          shift and go to state 10
+    CodeLine        shift and go to state 16
+    EmWord          shift and go to state 25
+    Color           shift and go to state 22
+    LinkWordName    shift and go to state 30
 
+    linkword                       shift and go to state 28
+    wordlineinit                   shift and go to state 76
+    specialtext                    shift and go to state 7
 
 state 72
 
-    (46) Li2speList -> Li2spe Text Cr .
+    (53) Li2Block -> Li2List .
+    (49) Li2List -> Li2List . Li2List
+    (48) Li2List -> . Li2 wordlineinit Cr
+    (49) Li2List -> . Li2List Li2List
 
-    Li2spe          reduce using rule 46 (Li2speList -> Li2spe Text Cr .)
-    Li1             reduce using rule 46 (Li2speList -> Li2spe Text Cr .)
-    Li1spe          reduce using rule 46 (Li2speList -> Li2spe Text Cr .)
-    Li0             reduce using rule 46 (Li2speList -> Li2spe Text Cr .)
-    Li0spe          reduce using rule 46 (Li2speList -> Li2spe Text Cr .)
-    $end            reduce using rule 46 (Li2speList -> Li2spe Text Cr .)
-    Hn              reduce using rule 46 (Li2speList -> Li2spe Text Cr .)
-    Gump            reduce using rule 46 (Li2speList -> Li2spe Text Cr .)
-    Hr              reduce using rule 46 (Li2speList -> Li2spe Text Cr .)
-    CodeBlock       reduce using rule 46 (Li2speList -> Li2spe Text Cr .)
-    Text            reduce using rule 46 (Li2speList -> Li2spe Text Cr .)
-    Strong          reduce using rule 46 (Li2speList -> Li2spe Text Cr .)
-    CodeLine        reduce using rule 46 (Li2speList -> Li2spe Text Cr .)
-    EmWord          reduce using rule 46 (Li2speList -> Li2spe Text Cr .)
-    Href            reduce using rule 46 (Li2speList -> Li2spe Text Cr .)
-    Blockquote      reduce using rule 46 (Li2speList -> Li2spe Text Cr .)
-    LinkWordName    reduce using rule 46 (Li2speList -> Li2spe Text Cr .)
+    Li1             reduce using rule 53 (Li2Block -> Li2List .)
+    Li1spe          reduce using rule 53 (Li2Block -> Li2List .)
+    Li0             reduce using rule 53 (Li2Block -> Li2List .)
+    Li0spe          reduce using rule 53 (Li2Block -> Li2List .)
+    $end            reduce using rule 53 (Li2Block -> Li2List .)
+    Hr              reduce using rule 53 (Li2Block -> Li2List .)
+    Hn              reduce using rule 53 (Li2Block -> Li2List .)
+    Gump            reduce using rule 53 (Li2Block -> Li2List .)
+    Blockquote      reduce using rule 53 (Li2Block -> Li2List .)
+    CodeBlock       reduce using rule 53 (Li2Block -> Li2List .)
+    Text            reduce using rule 53 (Li2Block -> Li2List .)
+    Strong          reduce using rule 53 (Li2Block -> Li2List .)
+    CodeLine        reduce using rule 53 (Li2Block -> Li2List .)
+    EmWord          reduce using rule 53 (Li2Block -> Li2List .)
+    Color           reduce using rule 53 (Li2Block -> Li2List .)
+    Href            reduce using rule 53 (Li2Block -> Li2List .)
+    LinkWordName    reduce using rule 53 (Li2Block -> Li2List .)
+    Li2             shift and go to state 71
+
+    Li2List                        shift and go to state 77
+
+state 73
+
+    (50) Li2speList -> Li2spe . wordlineinit Cr
+    (17) wordlineinit -> . Text
+    (18) wordlineinit -> . specialtext
+    (19) wordlineinit -> . wordlineinit Text
+    (20) wordlineinit -> . wordlineinit specialtext
+    (21) wordlineinit -> . Href
+    (23) specialtext -> . Strong
+    (24) specialtext -> . CodeLine
+    (25) specialtext -> . EmWord
+    (26) specialtext -> . linkword
+    (27) specialtext -> . Color
+    (31) linkword -> . LinkWordName Link
+
+    Text            shift and go to state 23
+    Href            shift and go to state 8
+    Strong          shift and go to state 10
+    CodeLine        shift and go to state 16
+    EmWord          shift and go to state 25
+    Color           shift and go to state 22
+    LinkWordName    shift and go to state 30
+
+    linkword                       shift and go to state 28
+    wordlineinit                   shift and go to state 78
+    specialtext                    shift and go to state 7
+
+state 74
+
+    (42) Li1List -> Li1 wordlineinit Cr Li2Block .
+
+    Li1             reduce using rule 42 (Li1List -> Li1 wordlineinit Cr Li2Block .)
+    Li0             reduce using rule 42 (Li1List -> Li1 wordlineinit Cr Li2Block .)
+    Li0spe          reduce using rule 42 (Li1List -> Li1 wordlineinit Cr Li2Block .)
+    $end            reduce using rule 42 (Li1List -> Li1 wordlineinit Cr Li2Block .)
+    Hr              reduce using rule 42 (Li1List -> Li1 wordlineinit Cr Li2Block .)
+    Hn              reduce using rule 42 (Li1List -> Li1 wordlineinit Cr Li2Block .)
+    Gump            reduce using rule 42 (Li1List -> Li1 wordlineinit Cr Li2Block .)
+    Blockquote      reduce using rule 42 (Li1List -> Li1 wordlineinit Cr Li2Block .)
+    CodeBlock       reduce using rule 42 (Li1List -> Li1 wordlineinit Cr Li2Block .)
+    Text            reduce using rule 42 (Li1List -> Li1 wordlineinit Cr Li2Block .)
+    Strong          reduce using rule 42 (Li1List -> Li1 wordlineinit Cr Li2Block .)
+    CodeLine        reduce using rule 42 (Li1List -> Li1 wordlineinit Cr Li2Block .)
+    EmWord          reduce using rule 42 (Li1List -> Li1 wordlineinit Cr Li2Block .)
+    Color           reduce using rule 42 (Li1List -> Li1 wordlineinit Cr Li2Block .)
+    Href            reduce using rule 42 (Li1List -> Li1 wordlineinit Cr Li2Block .)
+    LinkWordName    reduce using rule 42 (Li1List -> Li1 wordlineinit Cr Li2Block .)
+
+
+state 75
+
+    (51) Li2speList -> Li2speList Li2speList .
+    (51) Li2speList -> Li2speList . Li2speList
+    (50) Li2speList -> . Li2spe wordlineinit Cr
+    (51) Li2speList -> . Li2speList Li2speList
+
+  ! shift/reduce conflict for Li2spe resolved as shift
+    Li1             reduce using rule 51 (Li2speList -> Li2speList Li2speList .)
+    Li1spe          reduce using rule 51 (Li2speList -> Li2speList Li2speList .)
+    Li0             reduce using rule 51 (Li2speList -> Li2speList Li2speList .)
+    Li0spe          reduce using rule 51 (Li2speList -> Li2speList Li2speList .)
+    $end            reduce using rule 51 (Li2speList -> Li2speList Li2speList .)
+    Hr              reduce using rule 51 (Li2speList -> Li2speList Li2speList .)
+    Hn              reduce using rule 51 (Li2speList -> Li2speList Li2speList .)
+    Gump            reduce using rule 51 (Li2speList -> Li2speList Li2speList .)
+    Blockquote      reduce using rule 51 (Li2speList -> Li2speList Li2speList .)
+    CodeBlock       reduce using rule 51 (Li2speList -> Li2speList Li2speList .)
+    Text            reduce using rule 51 (Li2speList -> Li2speList Li2speList .)
+    Strong          reduce using rule 51 (Li2speList -> Li2speList Li2speList .)
+    CodeLine        reduce using rule 51 (Li2speList -> Li2speList Li2speList .)
+    EmWord          reduce using rule 51 (Li2speList -> Li2speList Li2speList .)
+    Color           reduce using rule 51 (Li2speList -> Li2speList Li2speList .)
+    Href            reduce using rule 51 (Li2speList -> Li2speList Li2speList .)
+    LinkWordName    reduce using rule 51 (Li2speList -> Li2speList Li2speList .)
+    Li2spe          shift and go to state 73
+
+  ! Li2spe          [ reduce using rule 51 (Li2speList -> Li2speList Li2speList .) ]
+
+    Li2speList                     shift and go to state 75
+
+state 76
+
+    (48) Li2List -> Li2 wordlineinit . Cr
+    (19) wordlineinit -> wordlineinit . Text
+    (20) wordlineinit -> wordlineinit . specialtext
+    (23) specialtext -> . Strong
+    (24) specialtext -> . CodeLine
+    (25) specialtext -> . EmWord
+    (26) specialtext -> . linkword
+    (27) specialtext -> . Color
+    (31) linkword -> . LinkWordName Link
+
+    Cr              shift and go to state 79
+    Text            shift and go to state 45
+    Strong          shift and go to state 10
+    CodeLine        shift and go to state 16
+    EmWord          shift and go to state 25
+    Color           shift and go to state 22
+    LinkWordName    shift and go to state 30
+
+    linkword                       shift and go to state 28
+    specialtext                    shift and go to state 46
+
+state 77
+
+    (49) Li2List -> Li2List Li2List .
+    (49) Li2List -> Li2List . Li2List
+    (48) Li2List -> . Li2 wordlineinit Cr
+    (49) Li2List -> . Li2List Li2List
+
+  ! shift/reduce conflict for Li2 resolved as shift
+    Li1             reduce using rule 49 (Li2List -> Li2List Li2List .)
+    Li1spe          reduce using rule 49 (Li2List -> Li2List Li2List .)
+    Li0             reduce using rule 49 (Li2List -> Li2List Li2List .)
+    Li0spe          reduce using rule 49 (Li2List -> Li2List Li2List .)
+    $end            reduce using rule 49 (Li2List -> Li2List Li2List .)
+    Hr              reduce using rule 49 (Li2List -> Li2List Li2List .)
+    Hn              reduce using rule 49 (Li2List -> Li2List Li2List .)
+    Gump            reduce using rule 49 (Li2List -> Li2List Li2List .)
+    Blockquote      reduce using rule 49 (Li2List -> Li2List Li2List .)
+    CodeBlock       reduce using rule 49 (Li2List -> Li2List Li2List .)
+    Text            reduce using rule 49 (Li2List -> Li2List Li2List .)
+    Strong          reduce using rule 49 (Li2List -> Li2List Li2List .)
+    CodeLine        reduce using rule 49 (Li2List -> Li2List Li2List .)
+    EmWord          reduce using rule 49 (Li2List -> Li2List Li2List .)
+    Color           reduce using rule 49 (Li2List -> Li2List Li2List .)
+    Href            reduce using rule 49 (Li2List -> Li2List Li2List .)
+    LinkWordName    reduce using rule 49 (Li2List -> Li2List Li2List .)
+    Li2             shift and go to state 71
+
+  ! Li2             [ reduce using rule 49 (Li2List -> Li2List Li2List .) ]
+
+    Li2List                        shift and go to state 77
+
+state 78
+
+    (50) Li2speList -> Li2spe wordlineinit . Cr
+    (19) wordlineinit -> wordlineinit . Text
+    (20) wordlineinit -> wordlineinit . specialtext
+    (23) specialtext -> . Strong
+    (24) specialtext -> . CodeLine
+    (25) specialtext -> . EmWord
+    (26) specialtext -> . linkword
+    (27) specialtext -> . Color
+    (31) linkword -> . LinkWordName Link
+
+    Cr              shift and go to state 80
+    Text            shift and go to state 45
+    Strong          shift and go to state 10
+    CodeLine        shift and go to state 16
+    EmWord          shift and go to state 25
+    Color           shift and go to state 22
+    LinkWordName    shift and go to state 30
+
+    linkword                       shift and go to state 28
+    specialtext                    shift and go to state 46
+
+state 79
+
+    (48) Li2List -> Li2 wordlineinit Cr .
+
+    Li2             reduce using rule 48 (Li2List -> Li2 wordlineinit Cr .)
+    Li1             reduce using rule 48 (Li2List -> Li2 wordlineinit Cr .)
+    Li1spe          reduce using rule 48 (Li2List -> Li2 wordlineinit Cr .)
+    Li0             reduce using rule 48 (Li2List -> Li2 wordlineinit Cr .)
+    Li0spe          reduce using rule 48 (Li2List -> Li2 wordlineinit Cr .)
+    $end            reduce using rule 48 (Li2List -> Li2 wordlineinit Cr .)
+    Hr              reduce using rule 48 (Li2List -> Li2 wordlineinit Cr .)
+    Hn              reduce using rule 48 (Li2List -> Li2 wordlineinit Cr .)
+    Gump            reduce using rule 48 (Li2List -> Li2 wordlineinit Cr .)
+    Blockquote      reduce using rule 48 (Li2List -> Li2 wordlineinit Cr .)
+    CodeBlock       reduce using rule 48 (Li2List -> Li2 wordlineinit Cr .)
+    Text            reduce using rule 48 (Li2List -> Li2 wordlineinit Cr .)
+    Strong          reduce using rule 48 (Li2List -> Li2 wordlineinit Cr .)
+    CodeLine        reduce using rule 48 (Li2List -> Li2 wordlineinit Cr .)
+    EmWord          reduce using rule 48 (Li2List -> Li2 wordlineinit Cr .)
+    Color           reduce using rule 48 (Li2List -> Li2 wordlineinit Cr .)
+    Href            reduce using rule 48 (Li2List -> Li2 wordlineinit Cr .)
+    LinkWordName    reduce using rule 48 (Li2List -> Li2 wordlineinit Cr .)
+
+
+state 80
+
+    (50) Li2speList -> Li2spe wordlineinit Cr .
+
+    Li2spe          reduce using rule 50 (Li2speList -> Li2spe wordlineinit Cr .)
+    Li1             reduce using rule 50 (Li2speList -> Li2spe wordlineinit Cr .)
+    Li1spe          reduce using rule 50 (Li2speList -> Li2spe wordlineinit Cr .)
+    Li0             reduce using rule 50 (Li2speList -> Li2spe wordlineinit Cr .)
+    Li0spe          reduce using rule 50 (Li2speList -> Li2spe wordlineinit Cr .)
+    $end            reduce using rule 50 (Li2speList -> Li2spe wordlineinit Cr .)
+    Hr              reduce using rule 50 (Li2speList -> Li2spe wordlineinit Cr .)
+    Hn              reduce using rule 50 (Li2speList -> Li2spe wordlineinit Cr .)
+    Gump            reduce using rule 50 (Li2speList -> Li2spe wordlineinit Cr .)
+    Blockquote      reduce using rule 50 (Li2speList -> Li2spe wordlineinit Cr .)
+    CodeBlock       reduce using rule 50 (Li2speList -> Li2spe wordlineinit Cr .)
+    Text            reduce using rule 50 (Li2speList -> Li2spe wordlineinit Cr .)
+    Strong          reduce using rule 50 (Li2speList -> Li2spe wordlineinit Cr .)
+    CodeLine        reduce using rule 50 (Li2speList -> Li2spe wordlineinit Cr .)
+    EmWord          reduce using rule 50 (Li2speList -> Li2spe wordlineinit Cr .)
+    Color           reduce using rule 50 (Li2speList -> Li2spe wordlineinit Cr .)
+    Href            reduce using rule 50 (Li2speList -> Li2spe wordlineinit Cr .)
+    LinkWordName    reduce using rule 50 (Li2speList -> Li2spe wordlineinit Cr .)
 
 WARNING: 
 WARNING: Conflicts:
 WARNING: 
 WARNING: shift/reduce conflict for Li0 in state 3 resolved as shift
-WARNING: shift/reduce conflict for Li0spe in state 12 resolved as shift
-WARNING: shift/reduce conflict for Blockquote in state 24 resolved as shift
-WARNING: shift/reduce conflict for Li0 in state 30 resolved as shift
-WARNING: shift/reduce conflict for Li0spe in state 34 resolved as shift
-WARNING: shift/reduce conflict for Blockquote in state 39 resolved as shift
-WARNING: shift/reduce conflict for Li1 in state 56 resolved as shift
-WARNING: shift/reduce conflict for Li1spe in state 57 resolved as shift
-WARNING: shift/reduce conflict for Li2spe in state 67 resolved as shift
-WARNING: shift/reduce conflict for Li2 in state 69 resolved as shift
+WARNING: shift/reduce conflict for Li0spe in state 13 resolved as shift
+WARNING: shift/reduce conflict for Blockquote in state 27 resolved as shift
+WARNING: shift/reduce conflict for Li0 in state 33 resolved as shift
+WARNING: shift/reduce conflict for Li0spe in state 38 resolved as shift
+WARNING: shift/reduce conflict for Blockquote in state 44 resolved as shift
+WARNING: shift/reduce conflict for Li1 in state 64 resolved as shift
+WARNING: shift/reduce conflict for Li1spe in state 65 resolved as shift
+WARNING: shift/reduce conflict for Li2spe in state 75 resolved as shift
+WARNING: shift/reduce conflict for Li2 in state 77 resolved as shift
